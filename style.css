@@ -1,0 +1,14 @@
+nav {
+    background-color: #F7F1D8;
+}
+nav > ul > li{
+    display: inline-block;
+    position: relative;
+    padding: 10px 10px;
+    right: 0px;
+}
+
+nav > div, nav > ul {
+    display: inline-block;
+    position: relative;
+}
