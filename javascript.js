@@ -1,21 +1,15 @@
-/* Replace menus with burger menu on resize */
-function windowResize() {
-  if (window.innerWidth >= 540) {
-    let navMenus = (document.getElementById("menus").style.display = "block");
-    let navBurger = (document.getElementsByClassName(
-      "fa-bars"
-    )[0].style.display = "none");
-  } else {
-    let navMenus = (document.getElementById("menus").style.display = "none");
-    let navBurger = (document.getElementsByClassName(
-      "fa-bars"
-    )[0].style.display = "block");
-  }
+function toggleNav() {
+  let burger = document.querySelector(".fa-bars");
+  let nav = document.querySelector(".menus");
+  const navLinks = document.querySelectorAll(".menus li");
+
+  burger.addEventListener("click", function() {
+    nav.classList.toggle("menusActive");
+  });
 }
 
-window.onresize = windowResize;
-
-/* Vertical Menus Toggle */
+toggleNav();
+/* Vertical Menus Toggle 
 function verticalMenus() {
   let mobileMenus = document.getElementById("mobileMenus");
   if (mobileMenus.style.display === "none") {
@@ -24,3 +18,4 @@ function verticalMenus() {
     mobileMenus.style.display = "none";
   }
 }
+*/

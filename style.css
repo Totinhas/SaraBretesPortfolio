@@ -1,12 +1,17 @@
-body {
+/* general styles */
+
+* {
   margin: 0px;
-  font-family: Tahoma, Verdana, Segoe, sans-serif;
+}
+
+body {
+  font-family: "Dosis", sans-serif;
 }
 
 /* nav style */
 
 nav {
-  background-color: #e9e7f4;
+  background-color: #fee3ed;
   -webkit-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
   -moz-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
   box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
@@ -14,26 +19,10 @@ nav {
   display: flex;
   justify-content: space-between;
   font-weight: 300;
+  color: #003a51;
 }
 
-nav > #mobileMenus {
-  position: absolute;
-  list-style: none;
-  top: 10%;
-  right: 5%;
-  background-color: #e9e7f4;
-  -webkit-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
-  -moz-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
-  box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
-  padding: 20px;
-  text-align: center;
-  display: none;
-}
-
-nav > #mobileMenus > li {
-  padding: 10px 20px;
-}
-nav > div {
+nav div {
   display: flex;
   justify-content: space-between;
   padding: 10px 10px;
@@ -44,10 +33,82 @@ nav > div {
   padding: 10px 10px;
   margin: 16px 16px;
   font-size: 20px;
+  cursor: pointer;
 }
+
+.menus {
+  list-style: none;
+  position: absolute;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #fee3ed;
+  margin-top: 70px;
+  padding: 0px 15px;
+  display: none;
+  transition: transform 0.5s ease-in;
+}
+
+.menus li {
+  padding: 20px 40px;
+}
+
+.menusActive {
+  display: block;
+  -webkit-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+  box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+  transition: opacity 10s ease-in-out;
+  opacity: 1;
+  padding: 0px;
+  min-width: 35%;
+}
+
+.menus li:hover {
+  background-color: #c02e64;
+  color: #ffffff;
+}
+.menus li:hover a {
+  color: #ffffff;
+}
+.menus a {
+  text-decoration: none;
+  color: #003a51;
+}
+
 /* Style for Desktop */
-nav > #menus > li {
-  display: inline-block;
-  position: relative;
-  padding: 10px 20px;
+
+@media screen and (min-width: 540px) {
+  nav .menus {
+    display: flex;
+    list-style: none;
+    text-transform: capitalize;
+    justify-content: space-around;
+    width: 40%;
+    padding: 10px 10px;
+    margin: 16px 16px;
+    position: relative;
+    flex-direction: row;
+    top: 0;
+  }
+
+  .menus li {
+    padding: 0px 10px;
+  }
+
+  .fa-bars {
+    display: none !important;
+  }
+
+  .menusActive {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  }
+
+  .menus li:hover {
+    background-color: #fee3ed;
+    cursor: pointer;
+  }
 }
