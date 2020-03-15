@@ -111,4 +111,8 @@ nav div {
     background-color: #fee3ed;
     cursor: pointer;
   }
+
+  .menus li:hover a {
+    color: #c02e64;
+  }
 }
