@@ -15,7 +15,7 @@ nav {
   -webkit-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
   -moz-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
   box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
-  padding: 0px 50px 0px 50px;
+  padding: 0px 100px 0px 100px;
   display: flex;
   justify-content: space-between;
   font-weight: 300;
@@ -77,6 +77,24 @@ nav div {
   color: #003a51;
 }
 
+
+
+/* Footer Styles */
+footer {
+  width: 100%;
+  display: block;
+  position: absolute;
+  background-color: #003a51;
+  bottom: 0px;
+}
+
+footer p {
+  color: #ffffff;
+  text-align: center;
+  font-size:10px;
+  padding:10px 10px
+}
+
 /* Style for Desktop */
 
 @media screen and (min-width: 540px) {
@@ -114,5 +132,33 @@ nav div {
 
   .menus li:hover a {
     color: #c02e64;
+  }
+
+  #intro {
+    background-image: url('bg.png');
+    height: 100vh;
+    width: 100%;
+    overflow-y: hidden;
+    position: fixed;
+    background-size: cover;
+  } 
+
+  #introText {
+    width: 25%;
+    background-color: rgba(0,58,81, .75);
+    display: block;
+    position: relative;
+    margin: 150px 150px;
+    padding: 50px 50px;
+    color: #fee3ed;
+  } 
+
+  #introText p{
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+
+  #introText a{
+    color:#ffffff;
   }
 }
