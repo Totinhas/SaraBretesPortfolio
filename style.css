@@ -102,17 +102,16 @@ footer p {
 footer > * {
   color: #ffffff;
 }
+#social > a > * {
+  width: 10%;
+  color: #ffffff;
+}
 
 #social {
   width: 50%;
   margin: 0 auto;
   position: relative;
   padding: 5px 5px;
-}
-
-#social > a > * {
-  width: 10%;
-  color: #ffffff;
 }
 
 /*Background style*/
