@@ -15,7 +15,7 @@ nav {
   -webkit-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
   -moz-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
   box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
-  padding: 0px 100px 0px 100px;
+  padding: 0px 10% 0px 10%;
   display: flex;
   justify-content: space-between;
   font-weight: 300;
@@ -48,6 +48,7 @@ nav div {
   padding: 0px 15px;
   display: none;
   transition: transform 0.5s ease-in;
+  z-index: 2;
 }
 
 .menus li {
@@ -77,8 +78,6 @@ nav div {
   color: #003a51;
 }
 
-
-
 /* Footer Styles */
 footer {
   width: 100%;
@@ -86,18 +85,120 @@ footer {
   position: absolute;
   background-color: #003a51;
   bottom: 0px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  height: 5%;
+
+  text-align: center;
 }
 
 footer p {
-  color: #ffffff;
   text-align: center;
-  font-size:10px;
-  padding:10px 10px
+  font-size: 10px;
+}
+footer > * {
+  color: #ffffff;
 }
 
-/* Style for Desktop */
+#social {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  padding: 5px 5px;
+}
 
-@media screen and (min-width: 540px) {
+#social > a > * {
+  width: 10%;
+  color: #ffffff;
+}
+
+/*Background style*/
+
+#intro {
+  background-image: url("bg.png");
+  min-height: 100%;
+  width: 100%;
+  position: absolute;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+#introText {
+  width: 50%;
+  background-color: rgba(0, 58, 81, 0.75);
+  display: block;
+  position: relative;
+  margin: 50px auto;
+  padding: 50px 50px;
+  color: #fee3ed;
+}
+#introText p {
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+
+#introText a {
+  color: #ffffff;
+}
+/* Styles for Tablet */
+
+@media screen and (min-width: 768px) {
+  nav {
+    padding: 0px 100px 0px 100px;
+  }
+
+  nav .menus {
+    display: flex;
+    list-style: none;
+    text-transform: capitalize;
+    justify-content: space-around;
+    width: 40%;
+    padding: 10px 10px;
+    margin: 16px 16px;
+    position: relative;
+    flex-direction: row;
+    top: 0;
+  }
+
+  .menus li {
+    padding: 0px 10px;
+  }
+
+  .fa-bars {
+    display: none !important;
+  }
+
+  .menusActive {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  }
+
+  .menus li:hover {
+    background-color: #fee3ed;
+    cursor: pointer;
+  }
+
+  .menus li:hover a {
+    color: #c02e64;
+  }
+}
+
+/* Styles for Desktop */
+
+@media screen and (min-width: 1200px) {
+  nav {
+    padding: 0px 100px 0px 100px;
+  }
+
   nav .menus {
     display: flex;
     list-style: none;
@@ -134,31 +235,16 @@ footer p {
     color: #c02e64;
   }
 
-  #intro {
-    background-image: url('bg.png');
-    height: 100vh;
-    width: 100%;
-    overflow-y: hidden;
-    position: fixed;
-    background-size: cover;
-  } 
-
   #introText {
     width: 25%;
-    background-color: rgba(0,58,81, .75);
-    display: block;
     position: relative;
-    margin: 150px 150px;
+    margin: 100px 150px;
     padding: 50px 50px;
     color: #fee3ed;
-  } 
-
-  #introText p{
-    line-height: 30px;
-    margin-bottom: 10px;
   }
-
-  #introText a{
-    color:#ffffff;
+  #social > a > * {
+    width: 5%;
+    color: #ffffff;
+    font-size: 18px;
   }
 }

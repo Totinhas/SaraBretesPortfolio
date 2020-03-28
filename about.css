@@ -1,0 +1,85 @@
+body {
+  background-color: #f6f6f6;
+}
+
+p {
+  font-size: 14px;
+}
+
+/* Styles for Mobile */
+
+/* Styles for Tablet */
+
+/*@media screen and (min-width: 768px) {
+    
+}*/
+
+/* Styles for Desktop */
+
+@media screen and (min-width: 1200px) {
+  #education,
+  #workExperience {
+    display: inline-block;
+    position: relative;
+    width: 45%;
+    margin: 0 auto;
+  }
+  .titleWithIcon {
+    text-align: left;
+    margin-bottom: 50px;
+  }
+  #education h2,
+  #workExperience h2,
+  .fas {
+    display: inline-block;
+  }
+
+  .fas {
+    font-size: 30px;
+    margin-right: 20px;
+    color: #c02e64;
+    vertical-align: top;
+    position: relative;
+  }
+
+  #experience {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 90%;
+    padding: 100px 120px 100px 120px;
+  }
+
+  .tableInfo {
+    border: 1px solid #ffcde0;
+    margin-right: 50px;
+    padding: 20px 10px 20px 20px;
+    line-height: 25px;
+  }
+
+  .tableInfo td {
+    vertical-align: top;
+  }
+
+  .tableInfo td:first-child {
+    width: 25%;
+    padding-right: 25px;
+  }
+  .tableInfo td:last-child {
+    width: 60%;
+  }
+
+  .tableInfo h4 {
+    margin-bottom: 20px;
+    color: #003a51;
+  }
+
+  .date {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .tableInfo td:nth-child(even) p:last-child {
+    margin-top: 15px;
+  }
+}
