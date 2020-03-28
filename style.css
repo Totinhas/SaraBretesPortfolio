@@ -102,7 +102,8 @@ footer p {
 footer > * {
   color: #ffffff;
 }
-#social > a > * {
+#social > a > .fas,
+#social > a > .fab {
   width: 10%;
   color: #ffffff;
 }
@@ -189,6 +190,12 @@ footer > * {
   .menus li:hover a {
     color: #c02e64;
   }
+
+  #social > a > .fas,
+  #social > a > .fab {
+    width: 5%;
+    color: #ffffff;
+  }
 }
 
 /* Styles for Desktop */
@@ -241,7 +248,8 @@ footer > * {
     padding: 50px 50px;
     color: #fee3ed;
   }
-  #social > a > * {
+  #social > a > .fas,
+  #social > a > .fab {
     width: 5%;
     color: #ffffff;
     font-size: 18px;
