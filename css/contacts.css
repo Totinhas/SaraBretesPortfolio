@@ -62,6 +62,9 @@ button {
   font-family: "Dosis", sans-serif;
   box-sizing: border-box;
 }
+input::placeholder {
+  overflow: visible;
+}
 form > p {
   margin-top: 5px;
   font-size: 14px;
