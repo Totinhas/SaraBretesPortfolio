@@ -63,7 +63,7 @@ button {
   box-sizing: border-box;
 }
 input::placeholder {
-  overflow: visible;
+  overflow: visible !important;
 }
 form > p {
   margin-top: 5px;
