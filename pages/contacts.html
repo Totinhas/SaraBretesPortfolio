@@ -75,13 +75,17 @@
           <i aria-hidden="true" class="fas fa-envelope"></i>
           <h2>Contact me</h2>
         </div>
-        <form action"mailto:sarabretes@me.com">
+        <form
+          action="https://formsubmit.co/sarinha.bretes@gmail.com"
+          method="POST"
+        >
           <label for="fullName">Full Name:</label>
           <input
             id="fullName"
             oninput="fullNameValidation()"
             placeholder="John Smith"
             type="text"
+            name="fullName"
           />
           <p id="errorName">
             <i aria-hidden="true" class="fas fa-exclamation"></i> Please insert
@@ -93,6 +97,7 @@
             oninput="emailValidation()"
             placeholder="me@johnsmith.com"
             type="email"
+            name="email"
           />
           <p id="errorEmail">
             <i aria-hidden="true" class="fas fa-exclamation"></i> Please insert
@@ -104,6 +109,7 @@
             oninput="phoneValidation()"
             placeholder="07700900796"
             type="tel"
+            name="mobile"
           />
           <p id="errorPhone">
             <i aria-hidden="true" class="fas fa-exclamation"></i> Please insert
@@ -115,12 +121,15 @@
             maxlength="500"
             oninput="messageValidation()"
             placeholder="Please write your message here. Min 10 characters"
+            name="message"
           ></textarea>
           <p id="errorTextField">
             <i aria-hidden="true" class="fas fa-exclamation"></i> Please write
             your message here.
           </p>
-          <input onclick="fullFormValidation()" type="button" value="Submit" />
+          <button onclick="fullFormValidation()" type="submit" value="Submit">
+            SUBMIT
+          </button>
           <h2 id="formSubmissionStatus"></h2>
         </form>
       </section>

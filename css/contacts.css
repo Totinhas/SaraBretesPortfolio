@@ -47,7 +47,7 @@ textarea {
   resize: none;
   min-height: 100px;
 }
-input[type="button"] {
+button {
   width: 100%;
   display: block;
   position: relative;
