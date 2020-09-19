@@ -6,16 +6,16 @@
     <meta content="Digital Portfolio for Designer" name="keywords" />
     <meta content="Sara Bretes" name="author" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Saras Portfolio | Charles Stanley Adwords Animation</title>
+    <title>Saras Portfolio | Contact me</title>
     <link href="../css/stylesInCommon.css" rel="stylesheet" />
-    <link href="../css/individualProject.css" rel="stylesheet" />
+    <link href="../css/contacts.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css?family=Dosis&display=swap"
       rel="stylesheet"
     />
     <script src="https://kit.fontawesome.com/74df61d62d.js"></script>
   </head>
-  <body>
+  <body onload="underlineMenu()">
     <header>
       <nav>
         <div>
@@ -23,60 +23,53 @@
         </div>
         <ul class="menus">
           <li>
-            <a href="../index.html">Home</a>
+            <a data-page="index.html" href="../index.html">Home</a>
           </li>
           <li>
-            <a href="../pages/about.html">About</a>
+            <a data-page="about.html" href="../pages/about.html">About</a>
           </li>
           <li>
-            <a href="../pages/projects.html">Projects</a>
+            <a data-page="projects.html" href="../pages/projects.html"
+              >Projects</a
+            >
           </li>
           <li>
-            <a href="../pages/contacts.html">Contacts</a>
+            <a data-page="contacts.html" href="../pages/contacts.html"
+              >Contacts</a
+            >
           </li>
         </ul>
         <i aria-hidden="true" class="fas fa-bars" title="Burger menu"></i>
       </nav>
     </header>
     <main>
-      <div id="projectMain">
-        <div>
-          <h3>Charles Stanley Animated adwords advertising</h3>
+      <section id="socialMedia">
+        <div class="titleWithIcon">
+          <i aria-hidden="true" class="fas fa-user"></i>
+          <h2>Connect with me on social media:</h2>
         </div>
-        <div id="project">
-          <div id="projectDescription">
-            <h4>Animated adversiting</h4>
-            <p>
-              This was a set of online adverts to advertise a wealth management
-              company. With use of their branding (kaleidoskope). The video file
-              is poor quality as the ads were developed with google adwords in
-              HTML and recorded to a video file to be embeded on this website.
-            </p>
-            <div id="aditionalInfo">
-              <p>
-                <span class="darkPinkFont">Tools used:</span> Google Web
-                Designer
-              </p>
-              <p><span class="darkPinkFont">Year:</span> 2017</p>
-              <p>
-                <span class="darkPinkFont">Company:</span> Charles Stanley
-                Direct Adwords Animation
-              </p>
-            </div>
-          </div>
-          <div id="projectAssets">
-            <iframe
-              id="csAnimatedAds"
-              allowfullscreen="allowfullscreen"
-              class="embed-content"
-              data-ut="embed-content"
-              src="https://www-ccv.adobe.io/v1/player/ccv/CUEAreRbCQD/embed?api_key=behance1&amp;bgcolor=%23191919"
-              title="Animated Wealth Management adversiting"
-            ></iframe>
-            <p>One of the sizes that was created for this animation set.</p>
-          </div>
-        </div>
-      </div>
+        <a href="https://twitter.com/Totinhas" target="_blank"
+          ><i
+            aria-hidden="true"
+            class="fab fa-twitter"
+            title="Twitter account"
+          ></i
+        ></a>
+        <a href="https://www.linkedin.com/in/sarabretes/" target="_blank"
+          ><i
+            aria-hidden="true"
+            class="fab fa-linkedin-in"
+            title="Linkedin account"
+          ></i
+        ></a>
+        <a href="https://www.behance.net/sarabretes" target="_blank"
+          ><i
+            aria-hidden="true"
+            class="fab fa-behance"
+            title="Behance account"
+          ></i
+        ></a>
+      </section>
     </main>
     <footer>
       <p>Sara Bretes &copy; All rights Reserved</p>
@@ -114,5 +107,7 @@
       </div>
     </footer>
     <script src="../js/mobileMenu.js"></script>
+    <script src="../js/contacts.js"></script>
+    <script src="../js/menu.js"></script>
   </body>
 </html>
