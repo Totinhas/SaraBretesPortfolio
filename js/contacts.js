@@ -62,6 +62,7 @@ function fullFormValidation() {
   if (fullNameIsValid && emailIsValid && phoneIsValid && messageIsValid) {
     formSubmissionMessage.innerHTML = "Form Submited Sucessfully";
   } else {
+    event.preventDefault();
     formSubmissionMessage.innerHTML =
       "There was a problem with your form, please try again";
   }
