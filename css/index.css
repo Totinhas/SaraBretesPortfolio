@@ -1,0 +1,54 @@
+/* general styles */
+
+body {
+  font-family: "Dosis", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+  background-image: url("../imgs/bg.jpg");
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/*Background style*/
+main.lazyBackground {
+  background-image: none;
+  background-color: #fee3ed;
+}
+
+#introText {
+  width: 50%;
+  background-color: rgba(0, 58, 81, 0.75);
+  padding: 50px 50px;
+  color: #fee3ed;
+}
+#introText p {
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+#introText a {
+  color: #ffffff;
+}
+#introText {
+  width: 50%;
+  position: relative;
+  margin: 40px auto;
+  padding: 50px 50px;
+  color: #fee3ed;
+}
+@media only screen and (min-width: 800px) {
+  #introText {
+    width: 25%;
+    position: relative;
+    margin: 100px 150px 50px 150px;
+    color: #fee3ed;
+  }
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="My Professional Porftolio" name="description" />
+    <meta content="Digital Portfolio for Designer" name="keywords" />
+    <meta content="Sara Bretes" name="author" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Saras Portfolio | Projects</title>
+    <link href="../css/stylesInCommon.css" rel="stylesheet" />
+    <link href="../css/projects.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Dosis&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/74df61d62d.js"></script>
+  </head>
+
+  <body onload="underlineMenu()">
+    <header>
+      <nav>
+        <div>
+          <a href="../index.html"><strong>Sara Bretes</strong></a>
+        </div>
+        <ul class="menus">
+          <li>
+            <a data-page="index.html" href="../index.html">Home</a>
+          </li>
+          <li>
+            <a data-page="about.html" href="../pages/about.html">About</a>
+          </li>
+          <li>
+            <a data-page="projects.html" href="../pages/projects.html"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a data-page="contacts.html" href="../pages/contacts.html"
+              >Contacts</a
+            >
+          </li>
+        </ul>
+        <i aria-hidden="true" class="fas fa-bars" title="Burger menu"></i>
+      </nav>
+    </header>
+    <div id="filterSelector">
+      <h4>Filter by:</h4>
+      <form>
+        <div class="inputWrapper">
+          <input
+            type="checkbox"
+            id="area"
+            class="filterOptions"
+            name="Projects Area"
+            value="Projects Area"
+            onclick="selectFilter(this)"
+          />
+          <label for="area">Projects Area</label>
+        </div>
+        <div class="inputWrapper">
+          <input
+            type="checkbox"
+            id="tools"
+            class="filterOptions"
+            name="tools"
+            value="tools"
+            onclick="selectFilter(this)"
+          />
+          <label for="tools"> Tools used</label>
+        </div>
+        <div class="inputWrapper">
+          <input
+            type="checkbox"
+            id="all"
+            class="selectAll"
+            name="all"
+            value="all"
+            onclick="selectAll(this)"
+          />
+          <label for="all">Select All</label>
+        </div>
+      </form>
+
+      <section id="filters">
+        <div id="ProjectArea">
+          <h4
+            onclick="filterWorkItems(this)"
+            class="area filterItem"
+            id="emailDesign"
+          >
+            Email Design
+          </h4>
+          <h4
+            onclick="filterWorkItems(this)"
+            class="area filterItem"
+            id="landingPages"
+          >
+            Landing Pages
+          </h4>
+          <h4
+            onclick="filterWorkItems(this)"
+            class="area filterItem"
+            id="graphicDesign"
+          >
+            Graphic Design
+          </h4>
+          <h4
+            onclick="filterWorkItems(this)"
+            class="area filterItem"
+            id="userInterface"
+          >
+            User Interface
+          </h4>
+          <h4
+            onclick="filterWorkItems(this)"
+            class="area filterItem"
+            id="animatedAds"
+          >
+            Animated Advertising
+          </h4>
+        </div>
+        <div id="toolsUsed">
+          <h4
+            onclick="filterWorkItems(this)"
+            class="tools filterItem"
+            id="photoshop"
+          >
+            Photoshop
+          </h4>
+          <h4
+            onclick="filterWorkItems(this)"
+            class="tools filterItem"
+            id="illustrator"
+          >
+            Illustrator
+          </h4>
+          <h4
+            onclick="filterWorkItems(this)"
+            class="tools filterItem"
+            id="afterEffects"
+          >
+            After Effects
+          </h4>
+          <h4
+            onclick="filterWorkItems(this)"
+            class="tools filterItem"
+            id="visualStudio"
+          >
+            Coda 2/ Visual Studio
+          </h4>
+          <h4
+            onclick="filterWorkItems(this)"
+            class="tools filterItem"
+            id="figma"
+          >
+            Figma
+          </h4>
+          <h4
+            onclick="filterWorkItems(this)"
+            class="tools filterItem"
+            id="webDesigner"
+          >
+            Google Web Designer
+          </h4>
+        </div>
+      </section>
+    </div>
+    <main>
+      <div class="workRow">
+        <p id="nothingToShow">Sorry, nothing to display in this category.</p>
+
+        <div
+          class="work graphicDesign illustrator photoshop lazyBackground"
+          id="work1"
+        >
+          <a href="../projects/christening.html" target="_blank">
+            <div class="workInfo">
+              <p>Carolina Christening</p>
+              <p>Graphic Design</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="work animatedAds webDesigner lazyBackground" id="work2">
+          <a
+            href="../projects/charles-stanley-animated-ads.html"
+            target="_blank"
+          >
+            <div class="workInfo">
+              <p>Charles Stanley Adwords Animation</p>
+              <p>Animated Adversiting</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="work graphicDesign illustrator photoshop lazyBackground"
+          id="work3"
+        >
+          <a href="../projects/gender-pay-gap-report-2018.html" target="_blank">
+            <div class="workInfo">
+              <p>Gender Pay Gap Report 2018</p>
+              <p>Graphic Design</p>
+            </div>
+          </a>
+        </div>
+        <div class="work animatedAds webDesigner lazyBackground" id="work4">
+          <a
+            href="../projects/charles-stanley-direct-animation.html"
+            target="_blank"
+          >
+            <div class="workInfo">
+              <p>Charles Stanley Direct Adwords Animation</p>
+              <p>Animated Adversiting</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="work animatedAds photoshop illustrator lazyBackground"
+          id="work5"
+        >
+          <a href="../projects/charles-stanley-gif.html" target="_blank">
+            <div class="workInfo">
+              <p>Charles Stanley Animated Gif</p>
+              <p>Animated Adversiting</p>
+            </div>
+          </a>
+        </div>
+        <div
+          class="work userInterface figma photoshop lazyBackground"
+          id="work6"
+        >
+          <a href="../projects/quotemehappy.html" target="_blank">
+            <div class="workInfo">
+              <p>Quotemehappy.com</p>
+              <p>User Interface</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Sara Bretes &copy; All rights Reserved</p>
+      <div id="social">
+        <a href="https://twitter.com/Totinhas" target="_blank" rel="noopener"
+          ><i
+            aria-hidden="true"
+            class="fab fa-twitter"
+            title="Twitter Account"
+          ></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/sarabretes/"
+          target="_blank"
+          rel="noopener"
+          title="Linkedin Account"
+          ><i aria-hidden="true" class="fab fa-linkedin-in"></i
+        ></a>
+        <a
+          href="https://www.behance.net/sarabretes"
+          target="_blank"
+          rel="noopener"
+          title="Behance Account"
+          ><i aria-hidden="true" class="fab fa-behance"></i
+        ></a>
+        <a
+          href="mailto:sarabretes@me.com?subject=I%20saw%20your%20portfolio..."
+          rel="noopener"
+          ><i
+            aria-hidden="true"
+            class="fas fa-envelope"
+            title="Send me an email"
+          ></i
+        ></a>
+      </div>
+    </footer>
+    <script src="../js/mobileMenu.js"></script>
+    <script src="../js/projects.js"></script>
+    <script src="../js/menu.js"></script>
+    <script src="../js/lazyLoading.js"></script>
+  </body>
+</html>

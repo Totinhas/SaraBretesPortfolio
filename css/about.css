@@ -1,0 +1,286 @@
+p {
+  font-size: 14px;
+}
+/* Styles for Mobile and small tablets*/
+
+#education,
+#workExperience {
+  display: block;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+#experience {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  padding: 100px 0px 100px 0px;
+}
+/*table styles*/
+
+.tableInfo {
+  line-height: 25px;
+}
+.tableInfo table {
+  border-collapse: collapse;
+  border: 1px solid #ffcde0;
+}
+.tableInfo td {
+  vertical-align: top;
+}
+.tableInfo td:first-child {
+  width: 25%;
+}
+.tableInfo td:last-child {
+  width: 60%;
+}
+.tableInfo h4 {
+  color: #003a51;
+}
+.date {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.tableInfo tr:nth-child(odd) td:nth-child(even) {
+  padding: 20px 10px 0px 20px;
+}
+.tableInfo tr:nth-child(even) {
+  border-bottom: 1px solid #ffcde0;
+}
+.tableInfo tr td {
+  border-collapse: collapse;
+  padding: 20px 10px 20px 20px;
+}
+.tableInfo li {
+  font-size: 14px;
+}
+.tableInfo ul {
+  padding-left: 10px;
+}
+/*end of table styles*/
+
+#tools {
+  width: 80%;
+  padding: 100px 0px 100px 0px;
+  margin: 0 auto;
+}
+#tools .titleWithIcon {
+  margin-top: 0px;
+}
+#tools .titleWithIcon {
+  margin-left: 40px;
+}
+/*Loading Skill Bars styles*/
+
+#tools ul {
+  width: 80%;
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+}
+#tools li {
+  position: relative;
+  list-style: none;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  line-height: 50px;
+}
+#tools li:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 30px;
+  height: 15px;
+  background-color: #fee3ed;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+#tools li:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 15px;
+  top: 30px;
+  background-color: #003a51;
+  border-radius: 5px;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  margin-top: 10px;
+}
+li#photoshop:after {
+  animation-name: photoshop;
+}
+li#illustrator:after {
+  animation-name: illustrator;
+}
+li#afterEffects:after {
+  animation-name: afterEffects;
+}
+li#audition:after {
+  animation-name: audition;
+}
+li#indesign:after {
+  animation-name: indesign;
+}
+li#figma:after {
+  animation-name: figma;
+}
+li#sketch:after {
+  animation-name: sketch;
+}
+li#wordpress:after {
+  animation-name: wordpress;
+}
+li#litmus:after {
+  animation-name: litmus;
+}
+li#dynamics:after {
+  animation-name: dynamics;
+}
+li#office:after {
+  animation-name: office;
+}
+li#messageFocus:after {
+  animation-name: messageFocus;
+}
+li#concep:after {
+  animation-name: concep;
+}
+li#eloqua:after {
+  animation-name: eloqua;
+}
+@keyframes photoshop {
+  to {
+    width: 70%;
+  }
+}
+@keyframes illustrator {
+  to {
+    width: 90%;
+  }
+}
+@keyframes afterEffects {
+  to {
+    width: 60%;
+  }
+}
+@keyframes audition {
+  to {
+    width: 40%;
+  }
+}
+@keyframes indesign {
+  to {
+    width: 70%;
+  }
+}
+@keyframes figma {
+  to {
+    width: 80%;
+  }
+}
+@keyframes sketch {
+  to {
+    width: 80%;
+  }
+}
+@keyframes wordpress {
+  to {
+    width: 60%;
+  }
+}
+@keyframes litmus {
+  to {
+    width: 90%;
+  }
+}
+@keyframes dynamics {
+  to {
+    width: 30%;
+  }
+}
+@keyframes office {
+  to {
+    width: 70%;
+  }
+}
+@keyframes messageFocus {
+  to {
+    width: 80%;
+  }
+}
+@keyframes concep {
+  to {
+    width: 50%;
+  }
+}
+@keyframes eloqua {
+  to {
+    width: 50%;
+  }
+}
+/*end of Loading Skill Bars styles*/
+
+/* Full CV Styles */
+#fullCv {
+  background-color: #fee3ed;
+  padding: 50px 50px 100px 50px;
+}
+
+#fullCv h4 {
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 60px;
+  margin-top: 0;
+}
+
+#fullCv .titleWithIcon {
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  text-align: center;
+}
+/* End Of Full CV Styles */
+
+/* Styles for Desktop and Big tablets*/
+
+@media only screen and (min-width: 800px) {
+  #education,
+  #workExperience {
+    display: inline-block;
+    width: 45%; /* 50% each container minus the margin between containers*/
+    display: flex;
+    flex-direction: column;
+  }
+  #workExperience {
+    margin-right: 40px;
+  }
+  #experience {
+    display: flex;
+  }
+
+  .tableInfo table {
+    height: 100%;
+  }
+  .tableInfo {
+    flex: 1;
+  }
+  #tools {
+    width: 80%;
+  }
+  #bars {
+    display: flex;
+  }
+  #tools ul {
+    width: 45%;
+    display: inline-block;
+    padding: 0;
+    margin: 0 40px;
+  }
+}

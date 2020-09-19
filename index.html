@@ -2,72 +2,94 @@
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="My Professional Porftolio" />
-    <meta name="keywords" content="Digital Portfolio for Designer" />
-    <meta name="author" content="Sara Bretes" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saras Portfolio</title>
-    <link href="style.css" rel="stylesheet" />
+    <meta content="My Professional Porftolio" name="description" />
+    <meta content="Digital Portfolio for Designer" name="keywords" />
+    <meta content="Sara Bretes" name="author" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Saras Portfolio | Home</title>
+    <link href="./css/stylesInCommon.css" rel="stylesheet" />
+    <link href="./css/index.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css?family=Dosis&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://kit.fontawesome.com/74df61d62d.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/74df61d62d.js"></script>
   </head>
-
-  <body>
+  <body onload="underlineMenu()">
     <header>
       <nav>
         <div>
-          <strong>Sara Bretes</strong>
+          <a href="./index.html"><strong>Sara Bretes</strong></a>
         </div>
         <ul class="menus">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="">Work</a></li>
-          <li><a href="">Contacts</a></li>
+          <li>
+            <a data-page="index.html" href="./index.html">Home</a>
+          </li>
+          <li>
+            <a data-page="about.html" href="./pages/about.html">About</a>
+          </li>
+          <li>
+            <a data-page="projects.html" href="./pages/projects.html"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a data-page="contacts.html" href="./pages/contacts.html"
+              >Contacts</a
+            >
+          </li>
         </ul>
-        <i class="fas fa-bars"></i>
+        <i aria-hidden="true" class="fas fa-bars" title="Burger menu"></i>
       </nav>
     </header>
-    <section id="intro">
-      <div id="introText">
-        <h3>Hello and Welcome!</h3>
-        <br />
-        <p>
-          My name is Sara. I've worked as a designer for the past 7 years and
-          I'm currently working for a Wealth Management Company in the City.
-        </p>
-        <p>
-          Here you can find out more about me, projects I've worked on, the
-          tools I've used to where I've studied.
-        </p>
-        <p>
-          If you have any questions please don't hesitate in
-          <a href="">contacting me</a>.
-        </p>
-      </div>
-    </section>
+    <main class="lazyBackground">
+      <section id="intro">
+        <div id="introText">
+          <h3>Hello and Welcome!</h3>
+          <br />
+          <p>
+            My name is Sara. I've worked as a designer for the past 7 years and
+            I'm currently working for a Wealth Management Company in the City.
+          </p>
+          <p>
+            Here you can find out more about me, projects I've worked on, the
+            tools I've used to where I've studied.
+          </p>
+          <p>
+            If you have any questions please don't hesitate in
+            <a href="./pages/contacts.html">contacting me</a>.
+          </p>
+        </div>
+      </section>
+    </main>
     <footer>
       <p>Sara Bretes &copy; All rights Reserved</p>
       <div id="social">
-        <a href="https://twitter.com/Totinhas" target="_blank"
-          ><i class="fab fa-twitter"></i
+        <a
+          href="https://www.linkedin.com/in/sarabretes/"
+          target="_blank"
+          rel="noopener"
+          title="Linkedin Account"
+          ><i aria-hidden="true" class="fab fa-linkedin-in"></i
         ></a>
-        <a href="https://www.linkedin.com/in/sarabretes/" target="_blank"
-          ><i class="fab fa-linkedin-in"></i
+        <a
+          href="https://www.behance.net/sarabretes"
+          target="_blank"
+          rel="noopener"
+          title="Behance Account"
+          ><i aria-hidden="true" class="fab fa-behance"></i
         ></a>
-        <a href="https://www.behance.net/sarabretes" target="_blank"
-          ><i class="fab fa-behance"></i
-        ></a>
-        <a href="mailto:sarabretes@me.com?subject=I saw your portfolio..."
-          ><i class="fas fa-envelope"></i
+        <a href="mailto:sarabretes@me.com?subject=I%20saw%20your%20portfolio..."
+          ><i
+            aria-hidden="true"
+            class="fas fa-envelope"
+            title="Send me an email"
+          ></i
         ></a>
       </div>
     </footer>
-    <script src="javascript.js"></script>
+    <script src="./js/mobileMenu.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/lazyLoading.js"></script>
   </body>
 </html>

@@ -1,0 +1,148 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: 100px 0px 50px 0px;
+  flex: 1;
+}
+
+#projectMain {
+  width: 80%;
+  position: relative;
+  margin: 0 auto;
+}
+
+#project {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+#projectDescription {
+  width: 80%;
+  position: relative;
+  margin: 25px auto;
+}
+
+#projectAssets {
+  width: 80%;
+  display: inline-block;
+  position: relative;
+  margin: 25px auto;
+}
+
+#projectAssets p {
+  font-style: oblique;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#projectAssets img {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  max-width: 100%;
+  box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+  -webkit-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+}
+
+iframe {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+  -webkit-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+}
+
+h3 {
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 30px auto 100px auto;
+}
+
+h4 {
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+h4::before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 50px;
+  background-color: #c02e64;
+  position: relative;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  margin-bottom: 20px;
+}
+
+#aditionalInfo p {
+  margin: 5px 0px;
+  font-size: 16px;
+}
+
+#aditionalInfo {
+  margin-top: 40px;
+}
+
+.darkPinkFont {
+  color: #c02e64;
+}
+
+#projectAssets #csAnimatedAds {
+  width: 100%;
+  height: auto;
+}
+
+#quoteMeHappy {
+  width: 100%;
+  height: 300px;
+}
+
+#projectAssets #csdAnimatedAd {
+  width: 100%;
+  height: 300px;
+}
+@media only screen and (min-width: 815px) {
+  #project {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  #projectDescription {
+    width: 40%;
+    margin-right: 50px;
+  }
+
+  #projectAssets {
+    width: 50%;
+  }
+  #projectAssets #csAnimatedAds {
+    width: 300px;
+    height: 600px;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  #projectDescription {
+    width: 30%;
+    margin-right: 20px;
+  }
+
+  #projectAssets {
+    width: 40%;
+  }
+
+  #projectAssets #csAnimatedAds {
+    width: 300px;
+    height: 600px;
+  }
+}

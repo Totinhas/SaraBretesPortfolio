@@ -1,0 +1,177 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+.filterItem {
+  display: none;
+}
+.filterItem.selected {
+  color: #fee3ed;
+  text-decoration: underline;
+}
+main {
+  flex: 1;
+}
+
+/*Filter styles*/
+
+#filterSelector {
+  width: 80%;
+  position: relative;
+  display: block;
+  margin: 0 auto 40px auto;
+  text-align: center;
+  background-color: #003a51;
+  color: #fff;
+  padding: 20px 20px;
+}
+
+#filterSelector > h4 {
+  margin-top: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+h4 {
+  margin-top: 5px;
+  margin-right: 20px;
+}
+
+label {
+  margin-right: 30px;
+}
+
+.workRow {
+  padding: 50px 0px 100px 0px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex: 1 0 auto;
+}
+
+h4 {
+  font-weight: normal;
+}
+
+.work {
+  height: 50px;
+  position: relative;
+  flex-basis: 80%;
+  margin-bottom: 40px;
+  -webkit-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+  box-shadow: 0px 3px 7px -4px rgba(0, 0, 0, 0.47);
+}
+
+#work1 {
+  background-image: url("../imgs/christening1.png");
+  height: 300px;
+  background-size: cover;
+}
+
+#work2 {
+  background-image: url("../imgs/csad1.png");
+  height: 300px;
+  background-size: cover;
+  background-position: right;
+}
+
+#work3 {
+  background-image: url("../imgs/genderreport1.png");
+  height: 300px;
+  background-size: cover;
+}
+
+#work4 {
+  background-image: url("../imgs/csdimg1.jpg");
+  height: 300px;
+  background-size: cover;
+}
+
+#work5 {
+  background-image: url("../imgs/gifad.jpg");
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+#work6 {
+  background-image: url("../imgs/quotemehappy1.jpg");
+  height: 300px;
+  background-size: cover;
+}
+
+#work1.lazyBackground,
+#work2.lazyBackground,
+#work3.lazyBackground,
+#work4.lazyBackground,
+#work5.lazyBackground,
+#work6.lazyBackground {
+  background-image: none;
+  background-color: #fee3ed;
+}
+.workInfo {
+  background-color: rgba(0, 58, 81, 0.9);
+  width: 100%;
+  min-height: 50px;
+  position: absolute;
+  bottom: 0px;
+}
+
+.workInfo p:first-of-type {
+  padding: 20px 0px 5px 20px;
+  color: #ffffff;
+  margin: 0px;
+}
+
+.workInfo p:nth-of-type(2) {
+  margin: 0px;
+  padding: 0px 0px 20px 20px;
+  font-style: italic;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.tag {
+  margin-top: 0px;
+}
+
+#nothingToShow {
+  display: none;
+}
+
+.inputWrapper {
+  padding: 20px 20px;
+  display: inline-block;
+  position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+  .work {
+    margin: 10px 20px;
+    flex-basis: 40%;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  #filterSelector {
+    width: 50%;
+  }
+  #filterSelector h4:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #fee3ed;
+  }
+
+  .work {
+    flex-basis: 25%;
+    margin: 10px 20px 80px 20px;
+  }
+
+  .workRow {
+    padding: 50px 50px 100px 50px;
+  }
+}
