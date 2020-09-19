@@ -61,6 +61,7 @@ button {
   border-radius: 5px;
   font-family: "Dosis", sans-serif;
   box-sizing: border-box;
+  border: 0px;
 }
 input::placeholder {
   overflow: visible !important;
