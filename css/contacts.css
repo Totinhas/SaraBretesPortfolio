@@ -44,6 +44,7 @@ textarea {
   box-sizing: border-box;
   line-height: 20px;
   height: 40px;
+  font-family: "Palanquin", sans-serif;
 }
 textarea {
   resize: none;
@@ -94,6 +95,6 @@ form > p {
   }
   #socialMedia {
     width: 90%;
-    padding: 50px 50px 100px 50px;
+    padding: 50px 50px 50px 50px;
   }
 }

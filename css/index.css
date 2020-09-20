@@ -1,7 +1,7 @@
 /* general styles */
 
 body {
-  font-family: "Dosis", sans-serif;
+  font-family: "Palanquin", sans-serif;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -30,9 +30,14 @@ main.lazyBackground {
   padding: 50px 50px;
   color: #fee3ed;
 }
+
+#introText h3 {
+  margin-bottom: 0px;
+}
 #introText p {
   line-height: 30px;
   margin-bottom: 10px;
+  text-align: justify;
 }
 #introText a {
   color: #ffffff;

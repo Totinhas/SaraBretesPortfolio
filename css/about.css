@@ -38,9 +38,9 @@ p {
 }
 .tableInfo h4 {
   color: #003a51;
+  margin-bottom: 0px;
 }
 .date {
-  margin-top: 10px;
   font-size: 14px;
   font-weight: bold;
 }
@@ -59,6 +59,13 @@ p {
 }
 .tableInfo ul {
   padding-left: 10px;
+}
+
+.tableInfo td:first-child p {
+  margin-bottom: 0px;
+}
+.tableInfo .date {
+  margin-top: 0px;
 }
 /*end of table styles*/
 
@@ -157,7 +164,7 @@ li#eloqua:after {
 }
 @keyframes photoshop {
   to {
-    width: 70%;
+    width: 90%;
   }
 }
 @keyframes illustrator {
@@ -272,9 +279,7 @@ li#eloqua:after {
   .tableInfo table {
     height: 100%;
   }
-  .tableInfo {
-    flex: 1;
-  }
+
   #tools {
     width: 80%;
   }

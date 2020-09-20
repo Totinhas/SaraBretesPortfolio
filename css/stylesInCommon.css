@@ -2,7 +2,7 @@ html,
 body {
   margin: 0px;
   padding: 0px;
-  font-family: "Dosis", sans-serif;
+  font-family: "Palanquin", sans-serif;
   height: 100%;
   display: block;
   position: relative;
@@ -145,7 +145,7 @@ footer #social a {
 /*title with icon style*/
 
 .titleWithIcon {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .titleWithIcon h2 {
