@@ -1,0 +1,27 @@
+#socialMedia {
+  padding: 50px 0px 80px 0px;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+}
+#socialMedia > a {
+  text-decoration: none;
+  color: #003a51;
+  font-size: 40px;
+  margin: 0px 20px 0px 20px;
+}
+
+#thankYou {
+  background-color: #fee3ed;
+  text-align: center;
+  padding: 50px 50px 50px 50px;
+  margin-bottom: 80px;
+}
+#thankYou h2 {
+  text-transform: uppercase;
+  margin-bottom: 60px;
+  vertical-align: top;
+  margin-top: 0px;
+}
