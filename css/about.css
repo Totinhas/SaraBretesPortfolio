@@ -230,7 +230,7 @@ li#eloqua:after {
 /* Full CV Styles */
 #fullCv {
   background-color: #fee3ed;
-  padding: 50px 50px 100px 50px;
+  padding: 50px 50px 50px 50px;
 }
 
 #fullCv h4 {
@@ -245,6 +245,10 @@ li#eloqua:after {
   position: relative;
   display: block;
   text-align: center;
+}
+
+#fullCv h2 {
+  margin-top: 0px !important;
 }
 /* End Of Full CV Styles */
 
