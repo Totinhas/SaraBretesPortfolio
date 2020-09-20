@@ -7,11 +7,14 @@ main {
   padding: 100px 0px 50px 0px;
   flex: 1;
 }
-
-#projectMain {
-  width: 80%;
-  position: relative;
-  margin: 0 auto;
+ul {
+  padding-left: 20px;
+}
+#projectAssets .longDescription {
+  font-size: 16px;
+  text-align: left;
+  font-style: normal;
+  margin-bottom: 10px;
 }
 
 #project {
@@ -94,6 +97,10 @@ h4::before {
   margin-top: 40px;
 }
 
+#aditionalInfo a {
+  color: #c02e64;
+  text-decoration: underline;
+}
 .darkPinkFont {
   color: #c02e64;
 }
