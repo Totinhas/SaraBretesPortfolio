@@ -105,6 +105,11 @@ h4 {
   background-size: cover;
 }
 
+#work7 {
+  background-image: url("../imgs/Proposal Cover.png");
+  height: 300px;
+  background-size: cover;
+}
 #work1.lazyBackground,
 #work2.lazyBackground,
 #work3.lazyBackground,
