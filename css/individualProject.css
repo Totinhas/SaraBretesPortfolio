@@ -10,6 +10,8 @@ main {
 ul {
   padding-left: 20px;
 }
+
+
 #projectAssets .longDescription {
   font-size: 16px;
   text-align: left;
@@ -101,6 +103,11 @@ h4::before {
   color: #c02e64;
   text-decoration: underline;
 }
+
+
+a.linkblack{
+  color: black !important;}
+
 .darkPinkFont {
   color: #c02e64;
 }
