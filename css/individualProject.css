@@ -19,6 +19,23 @@ ul {
   margin-bottom: 10px;
 }
 
+#projectAssets .longDescriptionBottomMargin {
+  font-size: 16px;
+  text-align: left;
+  font-style: normal;
+  margin-bottom: 40px;
+}
+
+#projectAssets .longDescriptionBottomNoMargin{
+  font-size: 16px;
+  text-align: left;
+  font-style: normal;
+  margin-bottom: 15px;
+}
+
+p.headerMarginTop {
+  margin-top: 50px;
+}
 #project {
   display: flex;
   flex-wrap: nowrap;
@@ -44,6 +61,22 @@ ul {
   font-size: 14px;
   text-align: center;
   margin-bottom: 50px;
+}
+
+#projectAssets .pWdescription {
+  font-style: oblique;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top:80px;
+  font-weight: bold;
+}
+
+.SectionHeader{
+  margin-top: 50px;
+}
+.SectionHeader:first-child{
+  margin-top: 0px;
 }
 
 #projectAssets img {
