@@ -126,7 +126,7 @@ h4 {
   background-size: cover;
 }
 #work11 {
-  background-image: url("../imgs/Modal\ 1\ .png");
+  background-image: url("../imgs/attributeSelector.png");
   height: 300px;
   background-size: cover;
 }
@@ -189,6 +189,57 @@ h4 {
   position: relative;
 }
 
+
+      /* ── Process artefact (sketch) ── */
+      .sketch-block {
+        background: #fffdf5;
+        border: 1px dashed #e0c97a;
+        border-radius: 6px;
+        padding: 24px;
+        margin: 8px 0 4px;
+      }
+      .sketch-label {
+        font-size: 11px; font-weight: 700; color: #b8962a;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+      }
+      .sketch-label::after { content: ''; flex: 1; height: 1px; background: #e0c97a; }
+      .sketch-row {
+        display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;
+      }
+      .sketch-option {
+        flex: 1; min-width: 180px;
+        background: #fff; border: 1px solid #e8e0c0;
+        border-radius: 4px; padding: 14px;
+      }
+      .sketch-option-label {
+        font-size: 11px; font-weight: 700; color: #999;
+        text-transform: uppercase; letter-spacing: 0.06em;
+        margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+      }
+      .sketch-option-label.rejected { color: #c02e64; }
+      .sketch-option-label.chosen   { color: #2d7a4f; }
+      .sketch-x { font-size: 14px; }
+      .sketch-check { font-size: 14px; }
+
+      /* mini fake rows for sketch */
+      .s-row {
+        height: 22px; background: #f5f5f5; border-radius: 3px;
+        margin-bottom: 4px; display: flex; align-items: center;
+        padding: 0 8px; gap: 6px;
+      }
+      .s-row.pink { background: #fde8e3; }
+      .s-box { width: 12px; height: 12px; border: 1.5px solid #ccc; border-radius: 2px; flex-shrink: 0; }
+      .s-box.checked { background: #003a51; border-color: #003a51; }
+      .s-line { height: 7px; border-radius: 2px; background: #ddd; flex: 1; }
+      .s-line.dark { background: #bbb; }
+      .s-plus { width: 16px; height: 16px; border-radius: 50%; background: #003a51; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+      .s-tag { font-size: 9px; color: #aaa; background: #eee; padding: 1px 5px; border-radius: 3px; }
+      .sketch-note {
+        font-size: 12px; color: #b8962a; font-style: italic;
+        margin-top: 10px; padding-top: 8px; border-top: 1px dashed #e0c97a;
+      }
+
 @media only screen and (min-width: 768px) {
   .work {
     margin: 10px 20px;
@@ -214,3 +265,5 @@ h4 {
     padding: 50px 50px 100px 50px;
   }
 }
+
+

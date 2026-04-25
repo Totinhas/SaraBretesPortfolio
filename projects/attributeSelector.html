@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="My Professional Porftolio" name="description" />
+    <meta content="Digital Portfolio for Designer" name="keywords" />
+    <meta content="Sara Bretes" name="author" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Saras Portfolio | Attribute Selector</title>
+    <link href="../css/stylesInCommon.css" rel="stylesheet" />
+    <link href="../css/individualProject.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Palanquin:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/74df61d62d.js"></script>
+
+    <style>
+      /* ── Caption ── */
+      .caption {
+        display: block;
+        font-size: 13px;
+        color: #999;
+        font-style: italic;
+        margin: 8px 0 32px;
+      }
+
+      /* ── Kept real image ── */
+      #projectAssets img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 6px;
+        border: 1px solid #f0d4de;
+      }
+
+      /* ── Mockup shell ── */
+      .mockup {
+        background: #f7f8fa;
+        border: 1px solid #dde0e8;
+        border-radius: 8px;
+        overflow: hidden;
+        font-family: 'Palanquin', sans-serif;
+        margin: 4px 0;
+      }
+      .mockup-titlebar {
+        background: #fff;
+        border-bottom: 1px solid #e8e8f0;
+        padding: 8px 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .mockup-dots { display: flex; gap: 5px; flex-shrink: 0; }
+      .mockup-dot { width: 9px; height: 9px; border-radius: 50%; }
+      .dot-r { background: #ff6058; }
+      .dot-y { background: #ffbd2e; }
+      .dot-g { background: #28c840; }
+      .mockup-title { font-size: 12px; font-weight: 600; color: #003a51; flex: 1; }
+      .mockup-step { font-size: 11px; color: #bbb; }
+
+      .panel-label {
+        padding: 5px 14px;
+        background: #f0f2f7;
+        font-size: 11px;
+        font-weight: 700;
+        color: #777;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        border-bottom: 1px solid #e8e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .panel-label span { font-weight: 400; color: #bbb; font-size: 10px; text-transform: none; letter-spacing: 0; }
+
+      .mockup-search {
+        padding: 8px 14px;
+        border-bottom: 1px solid #eee;
+        background: #fff;
+      }
+      .mockup-search-input {
+        width: 100%;
+        padding: 5px 10px;
+        border: 1px solid #e0e0e8;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #999;
+        background: #f9f9fb;
+        box-sizing: border-box;
+      }
+
+      /* attribute rows */
+      .attr-row {
+        display: grid;
+        grid-template-columns: 28px 1fr auto;
+        align-items: center;
+        padding: 9px 14px;
+        border-bottom: 1px solid #f0f0f5;
+        gap: 10px;
+        background: #fff;
+      }
+      .attr-row.highlighted { background: #edf3ff; }
+      .attr-name { font-size: 13px; font-weight: 600; color: #003a51; }
+      .attr-meta { font-size: 11px; color: #aaa; margin-top: 1px; }
+      .attr-sources { font-size: 11px; color: #bbb; text-align: right; }
+      .attr-btn { font-size: 16px; font-weight: 700; flex-shrink: 0; line-height: 1; background: none; border: none; cursor: default; width: 20px; text-align: center; }
+      .btn-add { color: #003a51; }
+      .btn-remove { color: #c02e64; font-size: 14px; }
+
+      /* basket */
+      .basket-panel { background: #f7f8fa; border-top: 2px dashed #dde0e8; }
+      .basket-row {
+        display: grid;
+        grid-template-columns: 28px 1fr 120px 120px 24px;
+        align-items: center;
+        padding: 8px 14px;
+        border-bottom: 1px solid #f0f0f5;
+        gap: 8px;
+        background: #fff;
+        font-size: 12px;
+        box-sizing: border-box;
+      }
+      .basket-row > * { min-width: 0; }
+      .basket-row.unresolved { background: #fff8f6; }
+      .basket-row.focused { background: #fde8e3 !important; outline: 2px solid #c02e64; outline-offset: -2px; }
+      .basket-row.selected-row { background: #edf3ff !important; }
+      .basket-header {
+        display: grid;
+        grid-template-columns: 28px 1fr 120px 120px 24px;
+        gap: 8px;
+        padding: 4px 14px;
+        background: #f0f2f7;
+        border-bottom: 1px solid #e0e0ea;
+        font-size: 10px;
+        font-weight: 700;
+        color: #999;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        box-sizing: border-box;
+      }
+      .basket-header > div { min-width: 0; }
+      .b-name { font-size: 13px; font-weight: 600; color: #003a51; }
+      .b-unit { font-size: 11px; color: #aaa; }
+      .b-select {
+        font-size: 11px; padding: 4px 6px;
+        border: 1px solid #ddd; border-radius: 4px;
+        background: #fff; color: #333;
+        width: 100%; box-sizing: border-box; min-width: 0;
+      }
+      .b-select.err { border-color: #c02e64; background: #fff0f3; color: #c02e64; }
+      .b-select.locked { background: #f5f5f5; color: #999; }
+      .status-ok { color: #2d7a4f; font-size: 13px; text-align: center; }
+      .status-err { color: #c02e64; font-size: 13px; text-align: center; }
+
+      .resize-handle {
+        height: 10px; background: #eee;
+        border-top: 1px solid #dde0e8; border-bottom: 1px solid #dde0e8;
+        display: flex; align-items: center; justify-content: center;
+        color: #ccc; font-size: 11px; letter-spacing: 3px;
+      }
+
+      .mockup-footer {
+        background: #f0f2f7;
+        border-top: 1px solid #e8e8f0;
+        padding: 7px 14px;
+        display: flex; align-items: center; justify-content: space-between;
+        font-size: 12px;
+      }
+      .footer-msg { color: #888; }
+      .footer-err { color: #c02e64; display: flex; align-items: center; gap: 5px; }
+      .footer-ok  { color: #2d7a4f; }
+      .footer-btn {
+        padding: 5px 14px; background: #003a51; color: #fff;
+        border-radius: 4px; font-size: 12px; font-weight: 600; border: none;
+        cursor: pointer;
+      }
+
+      /* ── Before/after ── */
+      .before-after {
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 2px; background: #f0d4de;
+        border-radius: 6px; overflow: hidden;
+        margin: 8px 0 4px;
+      }
+      .ba-panel { padding: 20px; }
+      .ba-panel.before { background: #fff8f6; }
+      .ba-panel.after  { background: #f4faf7; }
+      .ba-badge {
+        display: inline-block; font-size: 11px; font-weight: 700;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        padding: 3px 10px; border-radius: 3px; margin-bottom: 12px;
+      }
+      .badge-bad  { background: #fde8e3; color: #c02e64; }
+      .badge-good { background: #d8f0e4; color: #2d7a4f; }
+      .ba-panel > p { font-size: 12px !important; color: #999 !important; margin-bottom: 10px !important; font-style: normal !important; }
+
+      .flat-table { width: 100%; border-collapse: collapse; font-size: 11px; font-family: monospace; }
+      .flat-table th { background: #f5f0f3; padding: 4px 8px; text-align: left; color: #888; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px solid #f0d4de; }
+      .flat-table td { padding: 4px 8px; border-bottom: 1px solid #fae8ef; color: #555; }
+      .flat-table tr.dupe td { background: #fde8e3; color: #c02e64; }
+      .flat-table tr.fade td { color: #bbb; }
+      .table-note { font-size: 11px; color: #bbb; font-style: italic; margin-top: 8px; }
+
+      .chip-list { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
+      .chip {
+        display: flex; align-items: center;
+        padding: 8px 10px; background: #fff;
+        border: 1px solid #d8ede3; border-radius: 4px; gap: 10px;
+      }
+      .chip-name { font-size: 12px; font-weight: 600; color: #003a51; }
+      .chip-meta { font-size: 10px; color: #aaa; }
+      .chip-add { color: #2d7a4f; font-size: 16px; font-weight: 700; flex-shrink: 0; line-height: 1; }
+
+      /* ── Process artefact (sketch) ── */
+      .sketch-block {
+        background: #fffdf5;
+        border: 1px dashed #e0c97a;
+        border-radius: 6px;
+        padding: 24px;
+        margin: 8px 0 4px;
+      }
+      .sketch-label {
+        font-size: 11px; font-weight: 700; color: #b8962a;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+      }
+      .sketch-label::after { content: ''; flex: 1; height: 1px; background: #e0c97a; }
+      .sketch-row {
+        display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;
+      }
+      .sketch-option {
+        flex: 1; min-width: 180px;
+        background: #fff; border: 1px solid #e8e0c0;
+        border-radius: 4px; padding: 14px;
+      }
+      .sketch-option-label {
+        font-size: 11px; font-weight: 700; color: #999;
+        text-transform: uppercase; letter-spacing: 0.06em;
+        margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+      }
+      .sketch-option-label.rejected { color: #c02e64; }
+      .sketch-option-label.chosen   { color: #2d7a4f; }
+      .sketch-x { font-size: 14px; }
+      .sketch-check { font-size: 14px; }
+
+      /* mini fake rows for sketch */
+      .s-row {
+        height: 22px; background: #f5f5f5; border-radius: 3px;
+        margin-bottom: 4px; display: flex; align-items: center;
+        padding: 0 8px; gap: 6px;
+      }
+      .s-row.pink { background: #fde8e3; }
+      .s-box { width: 12px; height: 12px; border: 1.5px solid #ccc; border-radius: 2px; flex-shrink: 0; }
+      .s-box.checked { background: #003a51; border-color: #003a51; }
+      .s-line { height: 7px; border-radius: 2px; background: #ddd; flex: 1; }
+      .s-line.dark { background: #bbb; }
+      .s-plus { width: 16px; height: 16px; border-radius: 50%; background: #003a51; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+      .s-tag { font-size: 9px; color: #aaa; background: #eee; padding: 1px 5px; border-radius: 3px; }
+      .sketch-note {
+        font-size: 12px; color: #b8962a; font-style: italic;
+        margin-top: 10px; padding-top: 8px; border-top: 1px dashed #e0c97a;
+      }
+
+      /* ── Design decisions block ── */
+      .DesignDecision {
+        background: #fff8fb; border: 1px solid #f0d4de;
+        border-radius: 6px; padding: 32px; margin-top: 56px;
+      }
+      .DesignDecision .SectionHeader { margin-top: 0; border-bottom-color: #f0d4de; }
+      .DesignDecision p { font-size: 15px; line-height: 1.8; color: #2a2a2a; }
+
+      /* ── Outcome callout ── */
+      .outcome-callout {
+        background: #edf7f1;
+        border-left: 4px solid #2d7a4f;
+        border-radius: 0 6px 6px 0;
+        padding: 20px 24px;
+        margin: 24px 0;
+      }
+      .outcome-callout p {
+        font-size: 15px; color: #1a4a2e !important;
+        margin: 0 !important; font-weight: 500; line-height: 1.6 !important;
+      }
+
+      /* ── List ── */
+      #projectAssets ul {
+        padding-left: 0; list-style: none;
+        display: flex; flex-direction: column; gap: 10px;
+        margin: 16px 0 32px;
+      }
+      #projectAssets ul li {
+        padding-left: 20px; position: relative;
+        font-size: 15px; color: #2a2a2a; line-height: 1.7;
+      }
+      #projectAssets ul li::before {
+        content: '→'; position: absolute; left: 0;
+        color: #c02e64; font-size: 13px; top: 3px;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        #projectMain { padding: 40px 20px 80px; }
+        #project { grid-template-columns: 1fr; gap: 40px; }
+        #projectDescription { position: static; }
+        .before-after { grid-template-columns: 1fr; }
+        .basket-row { grid-template-columns: 24px 1fr 90px 90px 20px; }
+        .sketch-row { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div>
+          <a href="../index.html"><strong>Sara Bretes</strong></a>
+        </div>
+        <ul class="menus">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../pages/about.html">About</a></li>
+          <li><a href="../pages/projects.html">Projects</a></li>
+          <li><a href="../pages/contacts.html">Contacts</a></li>
+        </ul>
+        <i aria-hidden="true" class="fas fa-bars" title="Burger menu"></i>
+      </nav>
+    </header>
+
+    <main>
+      <div id="projectMain">
+        <div>
+          <h3>Attribute Selector</h3>
+        </div>
+
+        <div id="project">
+
+          <!-- ░░ LEFT ░░ -->
+          <div id="projectDescription">
+            <h4>UX Design · Data tooling</h4>
+            <p>
+              How do you design a selection interface when the thing being selected can exist in dozens of forms across dozens of sources — and the wrong choice silently corrupts the data downstream?
+            </p>
+            <h5>My role</h5>
+            <p>
+              Sole designer. Responsible for problem framing, interaction design, accessibility, and handoff. Worked directly with engineering and product throughout.
+            </p>
+            <div id="aditionalInfo">
+              <p><span class="darkPinkFont">Tools:</span> Figma</p>
+              <p><span class="darkPinkFont">Year:</span> 2023</p>
+            </div>
+          </div>
+
+          <!-- ░░ RIGHT ░░ -->
+          <div id="projectAssets">
+
+            <!-- CONTEXT -->
+            <h2 class="SectionHeader">Context</h2>
+            <p class="longDescriptionBottomMargin">
+              This project was part of a data platform that allows users to build custom datasets — pulling specific data points from providers like GSMArena, TechRadar, and Apple Store. The team was small and cross-functional, working in a fast-paced product environment with a focus on data accuracy and analyst productivity.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              Before analysts can build a dataset, they need to define which attributes to include: things like battery life, display resolution, or weight. The attribute selector is the tool that enables that. It was a greenfield feature — no existing pattern to follow — and the data model was genuinely complex: a single attribute like Battery Life can exist across multiple providers, and within each provider across multiple datasets. The design challenge was making that complexity navigable without hiding it, because the source of the data matters to the analyst's work.
+            </p>
+
+            <!-- PROBLEM -->
+            <h2 class="SectionHeader">The problem with the obvious solution</h2>
+            <p class="longDescriptionBottomMargin">
+              The instinctive approach — a flat table listing every attribute instance — would have produced an unusable interface. With 1,000 attributes averaging 4 instances each, users would face <b>4,000 rows</b>, most of them near-identical duplicates. Searching for "battery life" would return four indistinguishable rows with no clear basis for choosing between them.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              The problem wasn't just scale. It was that the flat model forced users to understand the data architecture before they could do their job. That's the wrong order. Users should be able to say <em>what</em> they want first, then decide <em>where</em> to get it from.
+            </p>
+
+            <div class="before-after">
+              <div class="ba-panel before">
+                <span class="ba-badge badge-bad">✕ Flat table</span>
+                <p>Every instance as its own row — 4,000 to scan:</p>
+                <table class="flat-table">
+                  <thead><tr><th>Attribute</th><th>Source</th><th>Dataset</th></tr></thead>
+                  <tbody>
+                    <tr class="dupe"><td>Battery life</td><td>GSMArena</td><td>Flagship</td></tr>
+                    <tr class="dupe"><td>Battery life</td><td>GSMArena</td><td>Budget</td></tr>
+                    <tr class="dupe"><td>Battery life</td><td>TechRadar</td><td>Best 2024</td></tr>
+                    <tr><td>Battery cap.</td><td>GSMArena</td><td>Flagship</td></tr>
+                    <tr><td>Resolution</td><td>Apple Store</td><td>iPhone</td></tr>
+                    <tr><td>Resolution</td><td>GSMArena</td><td>Flagship</td></tr>
+                    <tr class="fade"><td colspan="3">… 3,994 more rows</td></tr>
+                  </tbody>
+                </table>
+                <p class="table-note">1,000 attributes × 4 avg. instances = 4,000 rows</p>
+              </div>
+              <div class="ba-panel after">
+                <span class="ba-badge badge-good">✓ Compressed</span>
+                <p>One row per attribute — source resolved after:</p>
+                <div class="chip-list">
+                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Battery life</div><div class="chip-meta">3 sources · 3 instances</div></div></div>
+                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Battery capacity</div><div class="chip-meta">2 sources · 2 instances</div></div></div>
+                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Display resolution</div><div class="chip-meta">1 source · 1 instance</div></div></div>
+                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Weight</div><div class="chip-meta">2 sources · 3 instances</div></div></div>
+                </div>
+                <p class="table-note">Same 1,000 attributes — 1,000 rows. Source resolved in step 2.</p>
+              </div>
+            </div>
+            <span class="caption">Separating "what" from "where" collapses 4,000 rows to 1,000 and matches how analysts actually think.</span>
+
+            <!-- SCOPING -->
+            <h2 class="SectionHeader">Scoping the work</h2>
+            <p class="longDescriptionBottomMargin">
+              Before designing anything, I mapped the full user journey to understand where attribute selection sits within the broader flow. This confirmed the scope — attribute lists and dataset creation were out of scope for this phase — and surfaced a key constraint: the attribute list built here would feed directly into downstream dataset creation. Any ambiguity in selection had real consequences for data quality, which meant error handling needed to be a first-class concern, not an afterthought.
+            </p>
+            <a href="../imgs/mermaiddiagramAttributeList.png" target="_blank">
+              <img src="../imgs/mermaiddiagramAttributeList.png" alt="User journey diagram showing where attribute selection sits in the broader flow" />
+            </a>
+            <span class="caption">Mapping the journey early confirmed scope and revealed the data quality stake downstream.</span>
+
+            <!-- PROCESS ARTEFACT -->
+            <h2 class="SectionHeader">Early exploration — what I discarded first</h2>
+            <p class="longDescriptionBottomMargin">
+              My first exploration used a standard checkbox pattern — the obvious choice for a selection interface. I built it out to the point where I could test the core interaction, and the problem became immediately clear: checkboxes communicate a binary state (selected or not), but the same attribute can legitimately be selected multiple times, once per source. The checkbox model had no way to represent that without flattening the list back to individual instances — which reintroduced the 4,000-row problem.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              I also explored showing source and dataset inline on every row, so users could filter and select in a single step. This kept the list flat and made scanning harder, not easier. Neither approach solved the fundamental issue: the data model required a two-step interaction, and fighting that with a single-step UI just created a worse version of the original problem.
+            </p>
+
+            <div class="sketch-block">
+              <div class="sketch-label">Early explorations — discarded</div>
+              <div class="sketch-row">
+
+                <div class="sketch-option">
+                  <div class="sketch-option-label rejected"><span class="sketch-x">✕</span> Option A — Checkboxes</div>
+                  <div class="s-row"><div class="s-box checked"></div><div class="s-line dark"></div><div class="s-tag">GSMArena</div></div>
+                  <div class="s-row"><div class="s-box checked"></div><div class="s-line dark"></div><div class="s-tag">GSMArena</div></div>
+                  <div class="s-row"><div class="s-box"></div><div class="s-line"></div><div class="s-tag">TechRadar</div></div>
+                  <div class="s-row"><div class="s-box"></div><div class="s-line"></div><div class="s-tag">TechRadar</div></div>
+                  <div class="s-row"><div class="s-box"></div><div class="s-line"></div><div class="s-tag">Apple Store</div></div>
+                  <div class="sketch-note">Forces flat list — reintroduces 4,000 rows. Binary state can't represent multi-select of the same attribute.</div>
+                </div>
+
+                <div class="sketch-option">
+                  <div class="sketch-option-label rejected"><span class="sketch-x">✕</span> Option B — Inline source</div>
+                  <div class="s-row"><div class="s-line dark"></div><div class="s-tag">GSMArena</div><div class="s-tag">Flagship</div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-tag">GSMArena</div><div class="s-tag">Budget</div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-tag">TechRadar</div><div class="s-tag">2024</div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-tag">Apple</div><div class="s-tag">iPhone</div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-tag">GSMArena</div><div class="s-tag">Flagship</div></div>
+                  <div class="sketch-note">All info visible but rows multiply. Source choice at point-of-scan adds decision overhead before user has confirmed what they want.</div>
+                </div>
+
+                <div class="sketch-option">
+                  <div class="sketch-option-label chosen"><span class="sketch-check">✓</span> Option C — Two steps</div>
+                  <div class="s-row"><div class="s-plus">+</div><div class="s-line dark"></div><div class="s-tag">3 sources</div></div>
+                  <div class="s-row"><div class="s-plus">+</div><div class="s-line dark"></div><div class="s-tag">2 sources</div></div>
+                  <div class="s-row"><div class="s-plus">+</div><div class="s-line"></div><div class="s-tag">1 source</div></div>
+                  <div class="s-row"><div class="s-plus">+</div><div class="s-line"></div><div class="s-tag">3 sources</div></div>
+                  <div class="s-row"><div class="s-plus">+</div><div class="s-line"></div><div class="s-tag">2 sources</div></div>
+                  <div class="sketch-note">Select what first, resolve where second. Compressed rows match mental model. Multi-instance naturally supported.</div>
+                </div>
+
+              </div>
+            </div>
+            <span class="caption">Three directions explored. Options A and B each reproduced a version of the original problem. Option C resolved it by separating the two decisions.</span>
+
+            <!-- SOLUTION -->
+            <h2 class="SectionHeader">The solution</h2>
+            <p class="longDescriptionBottomMargin">
+              The core reframe was separating <em>what</em> from <em>where</em>. Attributes are compressed into single rows in the top panel. The user selects the attributes they want — adding them to a basket — and then resolves which source and dataset each one should come from. The two tasks have different cognitive weights and different space requirements, so they're separated into two distinct moments.
+            </p>
+
+            <!-- MOCKUP 1: main interface -->
+            <div class="mockup">
+              <div class="mockup-titlebar">
+                <div class="mockup-dots"><div class="mockup-dot dot-r"></div><div class="mockup-dot dot-y"></div><div class="mockup-dot dot-g"></div></div>
+                <div class="mockup-title">Select attributes</div>
+                <div class="mockup-step">Step 1 — choose what you want</div>
+              </div>
+              <div class="mockup-search"><div class="mockup-search-input">Search attributes…</div></div>
+              <div class="panel-label">Available attributes <span>(6)</span></div>
+              <div class="attr-row"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Battery life</div><div class="attr-meta">hours · GSMArena, TechRadar</div></div><div class="attr-sources">3 instances</div></div>
+              <div class="attr-row"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Battery capacity</div><div class="attr-meta">mAh · GSMArena</div></div><div class="attr-sources">2 instances</div></div>
+              <div class="attr-row"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Display resolution</div><div class="attr-meta">px · GSMArena, Apple Store, TechRadar</div></div><div class="attr-sources">3 instances</div></div>
+              <div class="attr-row"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Weight</div><div class="attr-meta">g · GSMArena, Apple Store</div></div><div class="attr-sources">3 instances</div></div>
+              <div class="attr-row"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Refresh rate</div><div class="attr-meta">Hz · TechRadar</div></div><div class="attr-sources">1 instance</div></div>
+              <div class="attr-row"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Storage</div><div class="attr-meta">GB · Apple Store, GSMArena</div></div><div class="attr-sources">2 instances</div></div>
+              <div class="resize-handle">· · ·</div>
+              <div class="basket-panel">
+                <div class="panel-label">Basket <span>0 attributes</span></div>
+                <div style="padding: 20px 14px; text-align: center; font-size: 13px; color: #bbb; background: #fff;">Add attributes above to get started</div>
+              </div>
+              <div class="mockup-footer"><span class="footer-msg">Select attributes to continue</span><button class="footer-btn">Confirm list →</button></div>
+            </div>
+            <span class="caption">Attributes compressed into single rows. The basket below is empty until the user begins selecting.</span>
+
+            <!-- MOCKUP 2: source resolution -->
+            <div class="mockup" style="margin-top: 16px;">
+              <div class="mockup-titlebar">
+                <div class="mockup-dots"><div class="mockup-dot dot-r"></div><div class="mockup-dot dot-y"></div><div class="mockup-dot dot-g"></div></div>
+                <div class="mockup-title">Select attributes</div>
+                <div class="mockup-step">Step 2 — resolve where each comes from</div>
+              </div>
+              <div class="mockup-search"><div class="mockup-search-input">Search attributes…</div></div>
+              <div class="panel-label">Available attributes <span>(4)</span></div>
+              <div class="attr-row"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Battery life</div><div class="attr-meta">TechRadar · 1 instance remaining</div></div><div class="attr-sources">1 left</div></div>
+              <div class="attr-row"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Weight</div><div class="attr-meta">g · 3 instances</div></div><div class="attr-sources">3 instances</div></div>
+              <div class="resize-handle">· · ·</div>
+              <div class="basket-panel">
+                <div class="panel-label">Basket <span>3 attributes — 2 need resolving</span></div>
+                <div class="basket-header"><div></div><div>Attribute</div><div>Source</div><div>Dataset</div><div></div></div>
+                <div class="basket-row">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Battery life</div><div class="b-unit">hours</div></div>
+                  <select class="b-select">
+                    <option value="">— source —</option>
+                    <option value="GSMArena" selected>GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select">
+                    <option value="">— dataset —</option>
+                    <option value="Flagship smartphones" selected>Flagship smartphones</option>
+                    <option value="Mid-range devices">Mid-range devices</option>
+                  </select>
+                  <div class="status-ok">✓</div>
+                </div>
+                <div class="basket-row unresolved">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Battery life</div><div class="b-unit">hours</div></div>
+                  <select class="b-select err">
+                    <option value="">— source —</option>
+                    <option value="GSMArena">GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select err" disabled>
+                    <option value="">— dataset —</option>
+                  </select>
+                  <div class="status-err">⚠</div>
+                </div>
+                <div class="basket-row unresolved">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Display resolution</div><div class="b-unit">px</div></div>
+                  <select class="b-select err">
+                    <option value="">— source —</option>
+                    <option value="GSMArena">GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select err" disabled>
+                    <option value="">— dataset —</option>
+                  </select>
+                  <div class="status-err">⚠</div>
+                </div>
+              </div>
+              <div class="mockup-footer"><span class="footer-err">⚠ 2 attributes need resolving</span><button class="footer-btn">Confirm list →</button></div>
+            </div>
+            <span class="caption">Battery life appears twice in the basket — two different sources. Each instance must be resolved before the list can be confirmed.</span>
+
+            <!-- KEY INTERACTIONS -->
+            <h2 class="SectionHeader">Key interaction decisions</h2>
+
+            <p class="longDescriptionBottomNoMargin"><b>Multi-instance: attribute stays until all instances are used</b></p>
+            <p class="longDescriptionBottomMargin">
+              Users can add the same attribute more than once — once per available source. As long as instances remain, the attribute stays visible in the top panel. When all instances are in the basket, it disappears. This communicates the constraint (you can't add more than what's available) without any additional explanation.
+            </p>
+
+            <!-- MOCKUP 3: multi-instance -->
+            <div class="mockup">
+              <div class="mockup-titlebar">
+                <div class="mockup-dots"><div class="mockup-dot dot-r"></div><div class="mockup-dot dot-y"></div><div class="mockup-dot dot-g"></div></div>
+                <div class="mockup-title">Multi-instance — attribute stays until all instances are used</div>
+              </div>
+              <div class="panel-label">Available attributes <span>(2)</span></div>
+              <div class="attr-row highlighted"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Battery life</div><div class="attr-meta">TechRadar · 1 instance remaining</div></div><div class="attr-sources" style="color:#003a51; font-weight:600;">1 left</div></div>
+              <div class="attr-row"><div class="attr-btn btn-add">+</div><div><div class="attr-name">Display resolution</div><div class="attr-meta">3 sources available</div></div><div class="attr-sources">3 instances</div></div>
+              <div class="resize-handle">· · ·</div>
+              <div class="basket-panel">
+                <div class="panel-label">Basket <span>2 instances of Battery life</span></div>
+                <div class="basket-header"><div></div><div>Attribute</div><div>Source</div><div>Dataset</div><div></div></div>
+                <div class="basket-row">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Battery life</div><div class="b-unit">hours</div></div>
+                  <select class="b-select">
+                    <option value="">— source —</option>
+                    <option value="GSMArena" selected>GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select">
+                    <option value="">— dataset —</option>
+                    <option value="Flagship smartphones" selected>Flagship smartphones</option>
+                    <option value="Mid-range devices">Mid-range devices</option>
+                  </select>
+                  <div class="status-ok">✓</div>
+                </div>
+                <div class="basket-row">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Battery life</div><div class="b-unit">hours</div></div>
+                  <select class="b-select">
+                    <option value="">— source —</option>
+                    <option value="GSMArena" selected>GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select">
+                    <option value="">— dataset —</option>
+                    <option value="Flagship smartphones">Flagship smartphones</option>
+                    <option value="Mid-range devices" selected>Mid-range devices</option>
+                  </select>
+                  <div class="status-ok">✓</div>
+                </div>
+              </div>
+              <div class="mockup-footer"><span class="footer-msg">1 more instance of Battery life available above</span><button class="footer-btn">Confirm list →</button></div>
+            </div>
+            <span class="caption">Two instances of Battery life added, one remaining. The attribute stays visible at the top until all instances are used.</span>
+
+            <p class="longDescriptionBottomNoMargin" style="margin-top: 28px;"><b>Resizable panels</b></p>
+            <p class="longDescriptionBottomMargin">
+              The interface has two competing jobs — finding attributes and resolving sources — each needing different amounts of space. Rather than imposing a fixed split, a draggable divider lets users shift emphasis depending on where they are in the task.
+            </p>
+
+            <p class="longDescriptionBottomNoMargin"><b>Bulk selection</b></p>
+            <p class="longDescriptionBottomMargin">
+              Shift + click selects consecutive rows; Alt + click selects non-consecutive ones. Any add or remove action applies to the full selection — critical for power users clearing a batch of unresolved basket items at once.
+            </p>
+
+            <!-- MOCKUP 4: bulk select -->
+            <div class="mockup">
+              <div class="mockup-titlebar">
+                <div class="mockup-dots"><div class="mockup-dot dot-r"></div><div class="mockup-dot dot-y"></div><div class="mockup-dot dot-g"></div></div>
+                <div class="mockup-title">Bulk remove — 2 basket items selected</div>
+              </div>
+              <div class="basket-panel" style="border-top: none;">
+                <div class="panel-label">Basket <span>Shift+click or Alt+click to select multiple</span></div>
+                <div class="basket-header"><div></div><div>Attribute</div><div>Source</div><div>Dataset</div><div></div></div>
+                <div class="basket-row selected-row">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Battery life</div></div>
+                  <select class="b-select err">
+                    <option value="">— source —</option>
+                    <option value="GSMArena">GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select err" disabled><option value="">— dataset —</option></select>
+                  <div class="status-err">⚠</div>
+                </div>
+                <div class="basket-row selected-row">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Battery capacity</div></div>
+                  <select class="b-select err">
+                    <option value="">— source —</option>
+                    <option value="GSMArena">GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select err" disabled><option value="">— dataset —</option></select>
+                  <div class="status-err">⚠</div>
+                </div>
+                <div class="basket-row">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Weight</div></div>
+                  <select class="b-select">
+                    <option value="">— source —</option>
+                    <option value="GSMArena" selected>GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select">
+                    <option value="">— dataset —</option>
+                    <option value="Flagship smartphones" selected>Flagship smartphones</option>
+                    <option value="Mid-range devices">Mid-range devices</option>
+                  </select>
+                  <div class="status-ok">✓</div>
+                </div>
+              </div>
+              <div class="mockup-footer"><span style="color: #1a5c8a; font-weight: 600;">2 selected — click the bin on any row to remove all</span></div>
+            </div>
+            <span class="caption">Two unresolved items selected. Clicking the bin on either row removes both at once.</span>
+
+            <p class="longDescriptionBottomNoMargin" style="margin-top: 28px;"><b>Action buttons on the left</b></p>
+            <p class="longDescriptionBottomMargin">
+              Convention places action buttons on the right. User testing surfaced a real friction point: on large monitors, analysts were reading an attribute name on the left and then dragging their cursor the full width of the screen to act on it. Shifting + and the delete action to the left cut that movement — a small decision that compounds significantly at the scale these analysts work at.
+            </p>
+
+            <!-- ERROR STATES -->
+            <h2 class="SectionHeader">Error states and accessibility</h2>
+            <p class="longDescriptionBottomMargin">
+              Error handling was designed around two failure modes: users who try to proceed with unresolved attributes, and users who create source conflicts by switching providers on an attribute already in use elsewhere.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              Unresolved attributes are flagged with a red highlight <em>and</em> a warning icon — never colour alone, which would fail WCAG 1.4.1. When a user clicks confirm with unresolved items remaining, the interface autoscrolls to the first problem row and focuses it. For source conflicts, the system detects them immediately and clears the affected field, prompting resolution rather than allowing silent errors to propagate downstream.
+            </p>
+
+            <!-- MOCKUP 5: error state -->
+            <div class="mockup">
+              <div class="mockup-titlebar">
+                <div class="mockup-dots"><div class="mockup-dot dot-r"></div><div class="mockup-dot dot-y"></div><div class="mockup-dot dot-g"></div></div>
+                <div class="mockup-title">Error state — first unresolved row focused after clicking Confirm</div>
+              </div>
+              <div class="basket-panel" style="border-top: none;">
+                <div class="panel-label">Basket <span>Autoscrolled to first unresolved row</span></div>
+                <div class="basket-header"><div></div><div>Attribute</div><div>Source</div><div>Dataset</div><div></div></div>
+                <div class="basket-row focused">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Battery life</div><div class="b-unit">Resolve this before continuing</div></div>
+                  <select class="b-select err">
+                    <option value="">— source —</option>
+                    <option value="GSMArena">GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select err" disabled><option value="">— dataset —</option></select>
+                  <div class="status-err">⚠</div>
+                </div>
+                <div class="basket-row unresolved">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Display resolution</div><div class="b-unit">px</div></div>
+                  <select class="b-select err">
+                    <option value="">— source —</option>
+                    <option value="GSMArena">GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select err" disabled><option value="">— dataset —</option></select>
+                  <div class="status-err">⚠</div>
+                </div>
+                <div class="basket-row">
+                  <div class="attr-btn btn-remove">🗑</div>
+                  <div><div class="b-name">Weight</div><div class="b-unit">g</div></div>
+                  <select class="b-select">
+                    <option value="">— source —</option>
+                    <option value="GSMArena" selected>GSMArena</option>
+                    <option value="TechRadar">TechRadar</option>
+                    <option value="Apple Store">Apple Store</option>
+                  </select>
+                  <select class="b-select">
+                    <option value="">— dataset —</option>
+                    <option value="Flagship smartphones" selected>Flagship smartphones</option>
+                    <option value="Mid-range devices">Mid-range devices</option>
+                  </select>
+                  <div class="status-ok">✓</div>
+                </div>
+              </div>
+              <div class="mockup-footer"><span class="footer-err">⚠ 2 attributes need resolving — resolve or remove to continue</span><button class="footer-btn">Confirm list →</button></div>
+            </div>
+            <span class="caption">Clicking Confirm with unresolved rows highlights the first problem and autoscrolls to it. Colour is always paired with an icon — never colour alone.</span>
+
+            <!-- DESIGN DECISIONS -->
+            <div class="DesignDecision">
+              <h2 class="SectionHeader">What this project required of me</h2>
+
+              <p class="longDescriptionBottomNoMargin"><b>Understanding a complex data model before designing anything</b></p>
+              <p class="longDescriptionBottomMargin">
+                The relationship between attributes, providers, and datasets wasn't immediately obvious. I spent significant time with product and engineering mapping the data structure before I opened Figma. That investment made every subsequent design decision faster and more grounded — and it meant I could have informed conversations about edge cases rather than discovering them late.
+              </p>
+
+              <p class="longDescriptionBottomNoMargin"><b>Knowing when to break convention</b></p>
+              <p class="longDescriptionBottomMargin">
+                The left-side button placement, the two-step model, the resizable panels — none of these follow standard patterns. Each required a clear rationale and the confidence to defend it. Being able to articulate why you broke a convention, and what you validated to support that decision, is what separates considered design from arbitrary design.
+              </p>
+
+              <p class="longDescriptionBottomNoMargin"><b>Designing for power users without excluding others</b></p>
+              <p class="longDescriptionBottomMargin">
+                The target users are data analysts working daily at scale. The design needed to reward that expertise — bulk selection, keyboard-driven interaction, resizable panels — without creating an interface that newer users couldn't navigate. The progressive disclosure model (select first, resolve second) served both audiences.
+              </p>
+
+              <p class="longDescriptionBottomNoMargin"><b>Accessibility as a design constraint, not an afterthought</b></p>
+              <p class="longDescriptionBottomMargin">
+                Building WCAG compliance into the error model from the start — dual signals, icon plus colour — meant it didn't require a retrofit. The follow-up work to move to cell-level errors is a continuation of that commitment, not a correction of an oversight.
+              </p>
+            </div>
+
+            <!-- OUTCOME -->
+            <h2 class="SectionHeader">Outcome</h2>
+            <p class="longDescriptionBottomMargin">
+              The feature shipped and was well received. Post-launch research confirmed the two-step model worked — users were able to build attribute lists without the cognitive overhead a flat table would have imposed. But the clearest signal of success came from within the product team itself.
+            </p>
+
+            <div class="outcome-callout">
+              <p>The select-then-resolve pattern worked so well that it was adopted as the interaction model for other selection flows across the platform — becoming an internal design standard rather than a one-off solution.</p>
+            </div>
+
+            <p class="longDescriptionBottomMargin">
+              Post-launch research also revealed a persistent space constraint: the modal format, even with resizable panels, wasn't giving power users enough room for complex selections. That finding directly informed the next iteration.
+            </p>
+
+            <ul>
+              <li>Modal replaced with a drawer to maximise working space — validated by post-launch user research.</li>
+              <li>Cell-level error states with icons to achieve full WCAG 1.4.1 compliance, moving beyond row-level highlighting.</li>
+              <li>Support for selecting entire datasets or existing attribute lists as a starting point, reducing repetitive work for returning users.</li>
+              <li>Conflict detection for pre-existing attribute lists: surfacing duplicates before a user confirms, rather than after.</li>
+            </ul>
+
+            <!-- REFLECTION -->
+            <h2 class="SectionHeader">What I'd do differently</h2>
+            <p class="longDescriptionBottomMargin">
+              I'd instrument the interaction earlier. The qualitative signal from user research was clear — the design was working — but I didn't have quantitative data on task completion time or error rates to benchmark against. That would have made the case for the drawer iteration faster and given the team a clearer baseline for measuring the next version.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              I'd also have challenged the modal constraint sooner. The space problem was visible in early testing, and I treated it as something to optimise within rather than a constraint worth questioning. In hindsight, the drawer was the right container from day one — advocating for it earlier would have saved a design iteration post-launch.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Sara Bretes &copy; All rights Reserved</p>
+      <div id="social">
+        <a href="https://twitter.com/Totinhas" target="_blank" rel="noopener"><i aria-hidden="true" class="fab fa-twitter" title="Twitter Account"></i></a>
+        <a href="https://www.linkedin.com/in/sarabretes/" target="_blank" rel="noopener" title="Linkedin Account"><i aria-hidden="true" class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.behance.net/sarabretes" target="_blank" rel="noopener" title="Behance Account"><i aria-hidden="true" class="fab fa-behance"></i></a>
+        <a href="https://totinhas.github.io/SaraBretesPortfolio/pages/contacts.html#contactForm" target="_blank"><i aria-hidden="true" class="fas fa-envelope" title="Send me an email"></i></a>
+      </div>
+    </footer>
+
+    <script src="../js/mobileMenu.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+
+        // Datasets per source — each source has its own distinct options
+        const sourceDatasets = {
+          'GSMArena':    ['Flagship smartphones', 'Mid-range devices'],
+          'TechRadar':   ['Best phones 2024'],
+          'Apple Store': ['iPhone lineup']
+        };
+
+        function updateRow(row) {
+          var selects = row.querySelectorAll('select');
+          var status  = row.querySelector('.status-ok, .status-err');
+          if (selects.length < 2 || !status) return;
+
+          var srcVal = selects[0].value;
+
+          // Repopulate dataset options based on selected source
+          if (srcVal && sourceDatasets[srcVal]) {
+            var datasets = sourceDatasets[srcVal];
+            var prevDs = selects[1].value;
+            selects[1].disabled = false;
+            selects[1].innerHTML = '<option value="">— dataset —</option>';
+            datasets.forEach(function (ds) {
+              var opt = document.createElement('option');
+              opt.value = ds;
+              opt.textContent = ds;
+              selects[1].appendChild(opt);
+            });
+            // Auto-select if only one dataset for this source
+            if (datasets.length === 1) {
+              selects[1].value = datasets[0];
+            } else if (prevDs) {
+              selects[1].value = prevDs;
+            }
+          } else {
+            selects[1].disabled = true;
+            selects[1].innerHTML = '<option value="">— dataset —</option>';
+          }
+
+          var dsVal = selects[1].value;
+          var resolved = srcVal && dsVal;
+
+          // Duplicate check — same source+dataset already used on another row
+          var basket = row.closest('.basket-panel, .basket-section');
+          var duplicate = false;
+          if (resolved && basket) {
+            basket.querySelectorAll('.basket-row').forEach(function (other) {
+              if (other === row) return;
+              var otherSelects = other.querySelectorAll('select');
+              if (otherSelects.length < 2) return;
+              if (otherSelects[0].value === srcVal && otherSelects[1].value === dsVal) {
+                duplicate = true;
+              }
+            });
+          }
+
+          if (duplicate) {
+            selects[0].classList.add('err');
+            selects[1].classList.add('err');
+            row.classList.add('unresolved');
+            row.classList.remove('focused');
+            status.className = 'status-err';
+            status.textContent = '⚠';
+          } else if (resolved) {
+            selects[0].classList.remove('err');
+            selects[1].classList.remove('err');
+            row.classList.remove('unresolved', 'focused');
+            status.className = 'status-ok';
+            status.textContent = '✓';
+          } else {
+            selects[0].classList.toggle('err', !srcVal);
+            selects[1].classList.toggle('err', !dsVal);
+            row.classList.add('unresolved');
+            status.className = 'status-err';
+            status.textContent = '⚠';
+          }
+
+          updateFooter(row);
+        }
+
+        function updateFooter(row) {
+          var mockup = row.closest('.mockup');
+          if (!mockup) return;
+          var footer = mockup.querySelector('.mockup-footer span');
+          if (!footer) return;
+          var unresolved = mockup.querySelectorAll('.basket-row.unresolved, .basket-row.focused').length;
+          if (unresolved > 0) {
+            footer.className = 'footer-err';
+            footer.textContent = '⚠ ' + unresolved + ' attribute' + (unresolved > 1 ? 's' : '') + ' need resolving';
+          } else {
+            var total = mockup.querySelectorAll('.basket-row').length;
+            if (total > 0) {
+              footer.className = 'footer-ok';
+              footer.textContent = '✓ All attributes resolved';
+            }
+          }
+        }
+
+        // Confirm button — highlight first error and scroll to it
+        document.querySelectorAll('.footer-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var mockup = btn.closest('.mockup');
+            if (!mockup) return;
+
+            mockup.querySelectorAll('.basket-row.focused').forEach(function (r) {
+              r.classList.remove('focused');
+            });
+
+            var unresolved = mockup.querySelectorAll('.basket-row.unresolved');
+            if (unresolved.length === 0) return;
+
+            var first = unresolved[0];
+            first.classList.add('focused');
+            first.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          });
+        });
+
+        // Attach change listeners to all basket selects
+        document.querySelectorAll('.basket-row').forEach(function (row) {
+          row.querySelectorAll('select').forEach(function (sel) {
+            sel.addEventListener('change', function () {
+              updateRow(row);
+            });
+          });
+        });
+
+        // On load: disable dataset dropdown where source is empty
+        document.querySelectorAll('.basket-row').forEach(function (row) {
+          var selects = row.querySelectorAll('select');
+          if (selects.length >= 2 && !selects[0].value) {
+            selects[1].disabled = true;
+          }
+        });
+
+      });
+    </script>
+  </body>
+</html>
