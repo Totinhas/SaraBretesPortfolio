@@ -345,7 +345,7 @@
             </p>
             <div id="aditionalInfo">
               <p><span class="darkPinkFont">Tools:</span> Figma</p>
-              <p><span class="darkPinkFont">Year:</span> 2023</p>
+              <p><span class="darkPinkFont">Team:</span> 1 designer, 2 engineers, 1 PM</p>
             </div>
           </div>
 
@@ -355,10 +355,10 @@
             <!-- CONTEXT -->
             <h2 class="SectionHeader">Context</h2>
             <p class="longDescriptionBottomMargin">
-              This project was part of a data platform that allows users to build custom datasets — pulling specific data points from providers like GSMArena, TechRadar, and Apple Store. The team was small and cross-functional, working in a fast-paced product environment with a focus on data accuracy and analyst productivity.
+              This project was part of a B2B market intelligence platform used by data analysts to build custom comparison datasets — pulling specific data points from providers like GSMArena, TechRadar, and Apple Store. The team was small and cross-functional, working in a fast-paced product environment with a focus on data accuracy and analyst productivity.
             </p>
             <p class="longDescriptionBottomMargin">
-              Before analysts can build a dataset, they need to define which attributes to include: things like battery life, display resolution, or weight. The attribute selector is the tool that enables that. It was a greenfield feature — no existing pattern to follow — and the data model was genuinely complex: a single attribute like Battery Life can exist across multiple providers, and within each provider across multiple datasets. The design challenge was making that complexity navigable without hiding it, because the source of the data matters to the analyst's work.
+              Before analysts can build a dataset, they need to define which attributes to include: things like battery life, display resolution, or weight. The attribute selector is the tool that enables that. It was a 0→1 feature — no existing pattern to follow, no prior art within the product to reference — and the data model was genuinely complex: a single attribute like Battery Life can exist across multiple providers, and within each provider across multiple datasets. The design challenge was making that complexity navigable without hiding it, because the source of the data matters to the analyst's work.
             </p>
 
             <!-- PROBLEM -->
@@ -393,9 +393,9 @@
                 <p>One row per attribute — source resolved after:</p>
                 <div class="chip-list">
                   <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Battery life</div><div class="chip-meta">3 sources · 3 instances</div></div></div>
-                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Battery capacity</div><div class="chip-meta">2 sources · 2 instances</div></div></div>
-                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Display resolution</div><div class="chip-meta">1 source · 1 instance</div></div></div>
-                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Weight</div><div class="chip-meta">2 sources · 3 instances</div></div></div>
+                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Battery capacity</div><div class="chip-meta">GSMArena · 2 instances</div></div></div>
+                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Display resolution</div><div class="chip-meta">GSMArena · Apple Store · TechRadar</div></div></div>
+                  <div class="chip"><div class="chip-add">+</div><div><div class="chip-name">Weight</div><div class="chip-meta">GSMArena · Apple Store · 3 instances</div></div></div>
                 </div>
                 <p class="table-note">Same 1,000 attributes — 1,000 rows. Source resolved in step 2.</p>
               </div>
@@ -746,6 +746,11 @@
             <!-- DESIGN DECISIONS -->
             <div class="DesignDecision">
               <h2 class="SectionHeader">What this project required of me</h2>
+
+              <p class="longDescriptionBottomNoMargin"><b>Pushing back on drag and drop</b></p>
+              <p class="longDescriptionBottomMargin">
+                Product initially pushed for a drag and drop interaction — a pattern that felt modern and tactile. I didn't think it was the right call, and I demonstrated why rather than just disagreeing. With thousands of attributes to work through, drag and drop creates three compounding problems: it doesn't scale to large volumes where the target and source may be far apart on screen; it makes conflict resolution significantly harder to surface in context; and it introduces serious accessibility barriers that would have required a parallel interaction model to meet WCAG requirements. Showing these failure modes concretely — rather than arguing in the abstract — was enough to shift the conversation. The + button pattern addressed all three.
+              </p>
 
               <p class="longDescriptionBottomNoMargin"><b>Understanding a complex data model before designing anything</b></p>
               <p class="longDescriptionBottomMargin">

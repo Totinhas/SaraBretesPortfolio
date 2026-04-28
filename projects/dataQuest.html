@@ -1,259 +1,948 @@
-    <!DOCTYPE html>
-    <html lang="en-GB">
-      <head>
-        <meta charset="UTF-8" />
-        <meta content="My Professional Porftolio" name="description" />
-        <meta content="Digital Portfolio for Designer" name="keywords" />
-        <meta content="Sara Bretes" name="author" />
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>Saras Portfolio | DataQuest</title>
-        <link href="../css/stylesInCommon.css" rel="stylesheet" />
-        <link href="../css/individualProject.css" rel="stylesheet" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Palanquin:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="My Professional Porftolio" name="description" />
+    <meta content="Digital Portfolio for Designer" name="keywords" />
+    <meta content="Sara Bretes" name="author" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Saras Portfolio | DataQuest</title>
+    <link href="../css/stylesInCommon.css" rel="stylesheet" />
+    <link href="../css/individualProject.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Palanquin:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/74df61d62d.js"></script>
 
-        <script src="https://kit.fontawesome.com/74df61d62d.js"></script>
-      </head>
-      <body>
-        <header>
-          <nav>
-            <div>
-              <a href="../index.html"><strong>Sara Bretes</strong></a>
+    <style>
+      /* ── Caption ── */
+      .caption {
+        display: block;
+        font-size: 13px;
+        color: #999;
+        font-style: italic;
+        margin: 8px 0 32px;
+      }
+
+      /* ── Kept real image ── */
+      #projectAssets img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 6px;
+        border: 1px solid #f0d4de;
+      }
+
+      /* ══════════════════════════════════════
+         DATAQUEST MOCKUP STYLES
+         Dark nav, light body — matches screenshots
+      ══════════════════════════════════════ */
+      .dq-mockup {
+        border: 1px solid #dde0e8;
+        border-radius: 8px;
+        overflow: hidden;
+        font-family: 'Palanquin', sans-serif;
+        margin: 4px 0;
+        background: #fff;
+        font-size: 13px;
+      }
+
+      /* Top app bar */
+      .dq-appbar {
+        background: #1a2332;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+      }
+      .dq-appbar-title {
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      /* Tab bar */
+      .dq-tabbar {
+        background: #fff;
+        border-bottom: 1px solid #e8e8f0;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        gap: 2px;
+      }
+      .dq-tab {
+        padding: 10px 16px;
+        font-size: 12px;
+        color: #666;
+        border-bottom: 2px solid transparent;
+        cursor: default;
+        white-space: nowrap;
+      }
+      .dq-tab.active {
+        color: #1a2332;
+        font-weight: 600;
+        border-bottom-color: #1a2332;
+      }
+      .dq-tab-add {
+        padding: 10px 12px;
+        color: #aaa;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      /* Page header bar */
+      .dq-pagehead {
+        background: #f5f6f8;
+        border-bottom: 1px solid #e8e8f0;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1a2332;
+      }
+      .dq-nav-btn {
+        width: 24px; height: 24px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background: #fff;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 11px; color: #666; flex-shrink: 0;
+      }
+
+      /* Lineage bar */
+      .dq-lineage {
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border-bottom: 1px solid #eee;
+        justify-content: space-between;
+      }
+      .dq-lineage-inner { display: flex; align-items: center; gap: 6px; }
+      .dq-lineage-node {
+        padding: 4px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #1a2332;
+        background: #fff;
+        font-weight: 500;
+      }
+      .dq-lineage-arrow { color: #aaa; font-size: 12px; }
+      .dq-chevron { color: #aaa; font-size: 12px; }
+
+      /* Entity summary card */
+      .dq-summary {
+        padding: 12px 16px;
+        border-bottom: 1px solid #eee;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .dq-summary-field label {
+        display: block;
+        font-size: 10px;
+        color: #aaa;
+        margin-bottom: 3px;
+        letter-spacing: 0.04em;
+      }
+      .dq-summary-field span {
+        font-size: 13px;
+        font-weight: 600;
+        color: #1a2332;
+      }
+
+      /* Inner tabs (Details / Products / Hierarchy / Markets) */
+      .dq-inner-tabs {
+        display: flex;
+        gap: 0;
+        padding: 0 16px;
+        border-bottom: 1px solid #eee;
+      }
+      .dq-inner-tab {
+        padding: 10px 14px;
+        font-size: 12px;
+        color: #888;
+        border-bottom: 2px solid transparent;
+        cursor: default;
+      }
+      .dq-inner-tab.active {
+        color: #1a2332;
+        font-weight: 600;
+        border-bottom-color: #1a2332;
+      }
+
+      /* Source row */
+      .dq-source-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 8px 16px;
+        gap: 8px;
+        font-size: 12px;
+        color: #888;
+      }
+      .dq-source-select {
+        padding: 4px 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #1a2332;
+        background: #fff;
+        font-family: 'Palanquin', sans-serif;
+      }
+
+      /* Search + source row for details tab */
+      .dq-search-source {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-bottom: 1px solid #eee;
+      }
+      .dq-search-input {
+        flex: 1;
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #999;
+        background: #fff;
+        font-family: 'Palanquin', sans-serif;
+      }
+      .dq-source-inline {
+        display: flex; align-items: center; gap: 6px;
+        font-size: 12px; color: #888;
+      }
+
+      /* Collapsible section */
+      .dq-section {
+        border: 1px solid #eee;
+        border-radius: 6px;
+        margin: 10px 16px;
+        overflow: hidden;
+      }
+      .dq-section-head {
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1a2332;
+        background: #fff;
+        cursor: default;
+      }
+      .dq-section-body {
+        padding: 0 14px 12px;
+        border-top: 1px solid #f0f0f5;
+      }
+      .dq-desc {
+        font-size: 12px;
+        color: #888;
+        padding: 10px 0 8px;
+        line-height: 1.5;
+      }
+      .dq-attrs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px 16px;
+        margin-top: 4px;
+      }
+      .dq-attr label {
+        display: block;
+        font-size: 10px;
+        color: #bbb;
+        margin-bottom: 2px;
+      }
+      .dq-attr span {
+        font-size: 12px;
+        font-weight: 600;
+        color: #1a2332;
+      }
+      .dq-attr span.muted { color: #aaa; font-weight: 400; }
+      .dq-section-collapsed .dq-section-body { display: none; }
+
+      /* Data table */
+      .dq-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      .dq-table th {
+        text-align: left;
+        padding: 8px 16px;
+        font-size: 11px;
+        color: #888;
+        border-bottom: 1px solid #eee;
+        font-weight: 600;
+        background: #fff;
+      }
+      .dq-table th .sort { color: #ccc; margin-left: 4px; font-size: 9px; }
+      .dq-table td {
+        padding: 10px 16px;
+        border-bottom: 1px solid #f5f5f5;
+        color: #1a2332;
+      }
+      .dq-table tr:last-child td { border-bottom: none; }
+      .dq-table .action { color: #aaa; text-align: right; }
+
+      /* Hierarchy tree */
+      .dq-tree { padding: 8px 16px 16px; }
+      .dq-tree-row {
+        display: grid;
+        grid-template-columns: 1fr 140px 140px;
+        align-items: center;
+        padding: 9px 0;
+        border-bottom: 1px solid #f5f5f5;
+        gap: 8px;
+      }
+      .dq-tree-row:last-child { border-bottom: none; }
+      .dq-tree-head {
+        display: grid;
+        grid-template-columns: 1fr 140px 140px;
+        padding: 6px 0 8px;
+        border-bottom: 1px solid #eee;
+        font-size: 11px;
+        color: #888;
+        font-weight: 600;
+        gap: 8px;
+      }
+      .dq-entity {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #1a2332;
+      }
+      .dq-entity.indent-1 { padding-left: 24px; }
+      .dq-entity.indent-2 { padding-left: 48px; }
+      .dq-toggle { color: #aaa; font-size: 11px; width: 14px; }
+      .dq-icon { color: #888; font-size: 12px; }
+      .dq-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .dq-badge.parent { background: #1a2332; color: #fff; }
+      .dq-badge.sub { background: #f0f2f7; color: #555; border: 1px solid #e0e0ea; }
+      .dq-country { font-size: 12px; color: #4a7fa8; }
+
+      /* List view */
+      .dq-list-toolbar {
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid #eee;
+      }
+      .dq-list-search {
+        flex: 1;
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #999;
+        background: #fff;
+        font-family: 'Palanquin', sans-serif;
+      }
+      .dq-records {
+        padding: 6px 16px;
+        font-size: 11px;
+        color: #aaa;
+        border-top: 1px solid #f5f5f5;
+        background: #fafafa;
+      }
+      .dq-records strong { color: #555; }
+
+      /* ── Design decisions block ── */
+      .DesignDecision {
+        background: #fff8fb; border: 1px solid #f0d4de;
+        border-radius: 6px; padding: 32px; margin-top: 56px;
+      }
+      .DesignDecision .SectionHeader { margin-top: 0; border-bottom-color: #f0d4de; }
+      .DesignDecision p { font-size: 15px; line-height: 1.8; color: #2a2a2a; }
+
+      /* ── Outcome callout ── */
+      .outcome-callout {
+        background: #edf7f1;
+        border-left: 4px solid #2d7a4f;
+        border-radius: 0 6px 6px 0;
+        padding: 20px 24px;
+        margin: 24px 0;
+      }
+      .outcome-callout p {
+        font-size: 15px; color: #1a4a2e !important;
+        margin: 0 !important; font-weight: 500; line-height: 1.6 !important;
+      }
+
+      /* ── Sketch / exploration block ── */
+      .sketch-block {
+        background: #fffdf5;
+        border: 1px dashed #e0c97a;
+        border-radius: 6px;
+        padding: 24px;
+        margin: 8px 0 4px;
+      }
+      .sketch-label {
+        font-size: 11px; font-weight: 700; color: #b8962a;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+      }
+      .sketch-label::after { content: ''; flex: 1; height: 1px; background: #e0c97a; }
+      .sketch-row { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+      .sketch-option {
+        flex: 1; min-width: 200px;
+        background: #fff; border: 1px solid #e8e0c0;
+        border-radius: 4px; padding: 14px;
+      }
+      .sketch-option-label {
+        font-size: 11px; font-weight: 700; color: #999;
+        text-transform: uppercase; letter-spacing: 0.06em;
+        margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+      }
+      .sketch-option-label.rejected { color: #c02e64; }
+      .sketch-option-label.chosen   { color: #2d7a4f; }
+      .sketch-note {
+        font-size: 12px; color: #b8962a; font-style: italic;
+        margin-top: 10px; padding-top: 8px; border-top: 1px dashed #e0c97a;
+      }
+
+      /* mini sketch rows */
+      .s-row { height: 22px; background: #f5f5f5; border-radius: 3px; margin-bottom: 4px; display: flex; align-items: center; padding: 0 8px; gap: 6px; }
+      .s-line { height: 7px; border-radius: 2px; background: #ddd; flex: 1; }
+      .s-line.dark { background: #bbb; }
+      .s-tag { font-size: 9px; color: #aaa; background: #eee; padding: 1px 5px; border-radius: 3px; }
+      .s-tag.blue { background: #e0ecf5; color: #4a7fa8; }
+      .s-tag.dark { background: #1a2332; color: #fff; }
+      .s-tag.green { background: #d8f0e4; color: #2d7a4f; }
+
+      /* ── List ── */
+      #projectAssets ul {
+        padding-left: 0; list-style: none;
+        display: flex; flex-direction: column; gap: 10px;
+        margin: 16px 0 32px;
+      }
+      #projectAssets ul li {
+        padding-left: 20px; position: relative;
+        font-size: 15px; color: #2a2a2a; line-height: 1.7;
+      }
+      #projectAssets ul li::before {
+        content: '→'; position: absolute; left: 0;
+        color: #c02e64; font-size: 13px; top: 3px;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        #projectMain { padding: 40px 20px 80px; }
+        #project { grid-template-columns: 1fr; gap: 40px; }
+        #projectDescription { position: static; }
+        .dq-summary { grid-template-columns: 1fr 1fr; }
+        .dq-attrs { grid-template-columns: 1fr 1fr; }
+        .sketch-row { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div>
+          <a href="../index.html"><strong>Sara Bretes</strong></a>
+        </div>
+        <ul class="menus">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../pages/about.html">About</a></li>
+          <li><a href="../pages/projects.html">Projects</a></li>
+          <li><a href="../pages/contacts.html">Contacts</a></li>
+        </ul>
+        <i aria-hidden="true" class="fas fa-bars" title="Burger menu"></i>
+      </nav>
+    </header>
+
+    <main>
+      <div id="projectMain">
+        <div>
+          <h3>DataQuest</h3>
+        </div>
+
+        <div id="project">
+
+          <!-- ░░ LEFT ░░ -->
+          <div id="projectDescription">
+            <h4>UX Design · Data exploration</h4>
+            <p>
+              How do you help users navigate a web of companies, products, and markets — when the same entity looks completely different depending on which data provider you ask?
+            </p>
+            <h5>My role</h5>
+            <p>
+              Sole designer. Responsible for the full design process from data model research through to shipped product. Worked directly with subject matter experts, engineering, and product.
+            </p>
+            <div id="aditionalInfo">
+              <p><span class="darkPinkFont">Tools:</span> Figma</p>
+              <p><span class="darkPinkFont">Team:</span> 1 designer, engineers, 1 PM</p>
             </div>
-            <ul class="menus">
-              <li>
-                <a href="../index.html">Home</a>
-              </li>
-              <li>
-                <a href="../pages/about.html">About</a>
-              </li>
-              <li>
-                <a href="../pages/projects.html">Projects</a>
-              </li>
-              <li>
-                <a href="../pages/contacts.html">Contacts</a>
-              </li>
+          </div>
+
+          <!-- ░░ RIGHT ░░ -->
+          <div id="projectAssets">
+
+            <!-- CONTEXT -->
+            <h2 class="SectionHeader">Context</h2>
+            <p class="longDescriptionBottomMargin">
+              DataQuest is a data traversal tool built for analysts — people who need to understand the relationships between companies, the products they offer, and the markets they operate in. It was part of a broader data platform, initially conceived as a value-add feature for subscribers.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              The underlying data is genuinely complex: a single company can have dozens of subsidiaries, offer multiple products, and operate across many markets simultaneously. Different data providers model these relationships differently, and may disagree on something as fundamental as who the ultimate parent of a company is. Designing an interface for this data required understanding it first.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              This was a 0→1 project in the fullest sense — no existing product to reference, no established pattern to follow, and no guarantee the concept would land with users. Everything from the navigation model to the interaction patterns to the information architecture was designed from scratch.
+            </p>
+
+            <!-- PROBLEM -->
+            <h2 class="SectionHeader">The problem</h2>
+            <p class="longDescriptionBottomMargin">
+              Analysts don't have a single starting point. Some think in terms of companies. Others start from a product and need to find the company behind it. Others start from a market and want to know what operates there. The data is the same graph; the entry point depends on the analyst's workflow.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              A tool that forced a single entry point would immediately alienate a significant portion of its users. The design challenge was to make the same underlying data model feel native to all of them — without building three separate tools.
+            </p>
+
+            <!-- MOCKUP 1: list view with tab switcher -->
+            <div class="dq-mockup">
+              <div class="dq-appbar"><span class="dq-appbar-title">DataQuest</span></div>
+              <div class="dq-tabbar">
+                <div class="dq-tab active">Companies</div>
+                <div class="dq-tab-add">+</div>
+              </div>
+              <div class="dq-list-toolbar">
+                <input class="dq-list-search" placeholder="Search companies…" readonly />
+              </div>
+              <table class="dq-table">
+                <thead>
+                  <tr>
+                    <th>Company Name <span class="sort">⇅</span></th>
+                    <th>Ticker <span class="sort">⇅</span></th>
+                    <th>Country of Domicile <span class="sort">⇅</span></th>
+                    <th>Status <span class="sort">⇅</span></th>
+                    <th>Sector <span class="sort">⇅</span></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Apple Inc.</strong></td><td>AAPL</td><td>United States</td><td>Public</td><td>Technology</td><td class="action">∨</td></tr>
+                  <tr><td><strong>Microsoft Corporation</strong></td><td>MSFT</td><td>United States</td><td>Public</td><td>Technology</td><td class="action">∨</td></tr>
+                  <tr><td><strong>Amazon.com Inc.</strong></td><td>AMZN</td><td>United States</td><td>Public</td><td>Consumer Cyclical</td><td class="action">∨</td></tr>
+                  <tr><td><strong>Alphabet Inc.</strong></td><td>GOOGL</td><td>United States</td><td>Public</td><td>Communication Services</td><td class="action">∨</td></tr>
+                  <tr><td><strong>NVIDIA Corporation</strong></td><td>NVDA</td><td>United States</td><td>Public</td><td>Technology</td><td class="action">∨</td></tr>
+                  <tr><td><strong>JPMorgan Chase &amp; Co.</strong></td><td>JPM</td><td>United States</td><td>Public</td><td>Business Services</td><td class="action">∨</td></tr>
+                  <tr><td><strong>Novo Nordisk</strong></td><td>NVO</td><td>Denmark</td><td>Public</td><td>Healthcare</td><td class="action">∨</td></tr>
+                </tbody>
+              </table>
+              <div class="dq-records"><strong>50</strong> of 150 records</div>
+            </div>
+            <span class="caption">The list view defaults to Companies — one of three entry points. Users can open new tabs to start from Products or Markets instead.</span>
+            <!-- MOCKUP: + tab showing entry point options -->
+            <div class="dq-mockup" style="margin-top: 16px;">
+              <div class="dq-appbar"><span class="dq-appbar-title">DataQuest</span></div>
+              <!-- Tab bar with + highlighted and dropdown anchored beneath it -->
+              <div style="position: relative;">
+                <div class="dq-tabbar" style="position: relative; z-index: 1;">
+                  <div class="dq-tab active">Companies</div>
+                  <div class="dq-tab-add" id="dq-plus-btn" style="background: #e8f0fe; color: #1a2332; border-radius: 4px 4px 0 0; font-weight: 700; padding: 10px 14px;">+</div>
+                </div>
+                <!-- Dropdown — JS will align it to the + button -->
+                <div id="dq-entry-dropdown" style="position: absolute; top: 38px; left: 0; background: #fff; border: 1px solid #dde0e8; border-radius: 0 6px 6px 6px; box-shadow: 0 6px 20px rgba(0,0,0,0.12); min-width: 180px; overflow: hidden; z-index: 10;">
+                  <div style="padding: 4px 0;">
+                    <div style="padding: 10px 16px; font-size: 13px; color: #1a2332; font-weight: 500; display: flex; align-items: center; gap: 10px; cursor: default;">
+                      <span style="font-size: 14px;">🏢</span> Companies
+                    </div>
+                    <div style="padding: 10px 16px; font-size: 13px; color: #1a2332; font-weight: 500; display: flex; align-items: center; gap: 10px; cursor: default; background: #f0f4f8;">
+                      <span style="font-size: 14px;">📦</span> Products
+                    </div>
+                    <div style="padding: 10px 16px; font-size: 13px; color: #1a2332; font-weight: 500; display: flex; align-items: center; gap: 10px; cursor: default;">
+                      <span style="font-size: 14px;">🌍</span> Markets
+                    </div>
+                  </div>
+                </div>
+                <div style="height: 148px; background: #fafafa;"></div>
+              </div>
+            </div>
+            <span class="caption">Clicking + reveals the three entry points — Companies, Products, Markets. Each opens an independent tab into the same underlying data graph, letting users run parallel explorations side by side.</span>
+
+
+            <!-- UNDERSTANDING THE DATA -->
+            <h2 class="SectionHeader">Understanding the data before designing anything</h2>
+            <p class="longDescriptionBottomMargin">
+              This was a greenfield project, and I came to it as a designer, not a domain expert. Before opening Figma, I spent significant time getting up to speed on the data itself — working with subject matter experts, doing independent research, and learning how the data model was structured and how different entities related to one another.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              That investment was non-negotiable. You cannot design a navigation system for data you don't understand. Getting it wrong at the model level produces an interface that looks coherent but breaks the moment a real analyst tries to use it. Understanding the data shaped every structural decision that followed.
+            </p>
+
+            <!-- THE SOLUTION -->
+            <h2 class="SectionHeader">The solution: multiple entry points, one consistent shell</h2>
+            <p class="longDescriptionBottomMargin">
+              The design is built around a tabbed entry point system — Companies, Products, Markets — that lets users start wherever their workflow begins. Each entry point opens the same underlying detail shell, which means the interface behaves consistently regardless of how the user arrived.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              Within a company detail view, four tabs give access to different facets of that entity: Details (key attributes), Products (what the company offers), Hierarchy (corporate structure), and Markets (where the company operates). The same pattern repeats across all entity types — learn it once, navigate anywhere.
+            </p>
+
+            <!-- MOCKUP 2: detail view — details tab -->
+            <div class="dq-mockup">
+              <div class="dq-appbar"><span class="dq-appbar-title">DataQuest</span></div>
+              <div class="dq-tabbar">
+                <div class="dq-tab active">Companies | AAPL</div>
+                <div class="dq-tab-add">+</div>
+              </div>
+              <div class="dq-pagehead">
+                <div class="dq-nav-btn">←</div>
+                <div class="dq-nav-btn">∨</div>
+                <span>Companies | AAPL</span>
+              </div>
+              <div class="dq-lineage">
+                <div class="dq-lineage-inner">
+                  <div class="dq-lineage-node">Company</div>
+                  <span class="dq-lineage-arrow">›</span>
+                  <div class="dq-lineage-node">Apple Inc.</div>
+                </div>
+                <span class="dq-chevron">∨</span>
+              </div>
+              <div class="dq-summary">
+                <div class="dq-summary-field"><label>Identifier</label><span>AAPL-001</span></div>
+                <div class="dq-summary-field"><label>Long Company Name</label><span>Apple Inc.</span></div>
+                <div class="dq-summary-field"><label>Headquarters</label><span>Cupertino, CA</span></div>
+                <div class="dq-summary-field"><label>Sector</label><span>Technology</span></div>
+              </div>
+              <div class="dq-inner-tabs">
+                <div class="dq-inner-tab active">Details</div>
+                <div class="dq-inner-tab">Products</div>
+                <div class="dq-inner-tab">Hierarchy</div>
+                <div class="dq-inner-tab">Markets</div>
+              </div>
+              <div class="dq-search-source">
+                <input class="dq-search-input" placeholder="🔍  Search attributes…" readonly />
+                <div class="dq-source-inline">
+                  <span>Source</span>
+                  <select class="dq-source-select"><option>Provider A</option><option>Provider B</option></select>
+                </div>
+              </div>
+              <div class="dq-section">
+                <div class="dq-section-head">Overview <span>∧</span></div>
+                <div class="dq-section-body">
+                  <div class="dq-desc">Apple Inc. is a global technology company specialising in software, hardware, and digital services.</div>
+                  <div class="dq-attrs">
+                    <div class="dq-attr"><label>Industry</label><span>Technology</span></div>
+                    <div class="dq-attr"><label>Sector</label><span>Technology</span></div>
+                    <div class="dq-attr"><label>Employees</label><span>141,000</span></div>
+                    <div class="dq-attr"><label>Exchange</label><span>NASDAQ</span></div>
+                    <div class="dq-attr"><label>Currency</label><span>USD</span></div>
+                    <div class="dq-attr"><label>Fiscal Year End</label><span>December</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="dq-section">
+                <div class="dq-section-head">Key Metrics <span>∧</span></div>
+                <div class="dq-section-body">
+                  <div class="dq-attrs">
+                    <div class="dq-attr"><label>Revenue</label><span>$241.0B</span></div>
+                    <div class="dq-attr"><label>Net Income</label><span>$45.8B</span></div>
+                    <div class="dq-attr"><label>EBITDA</label><span>$74.7B</span></div>
+                    <div class="dq-attr"><label>Operating Margin</label><span>41.0%</span></div>
+                    <div class="dq-attr"><label>Free Cash Flow</label><span>$34.8B</span></div>
+                    <div class="dq-attr"><label>Total Assets</label><span>$327.8B</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="dq-section dq-section-collapsed">
+                <div class="dq-section-head">Valuation <span>∨</span></div>
+              </div>
+              <div style="height: 8px;"></div>
+            </div>
+            <span class="caption">The Details tab shows collapsible attribute sections with a source switcher. The same shell pattern is reused across all entity types.</span>
+
+            <!-- MOCKUP 3: hierarchy tab -->
+            <div class="dq-mockup" style="margin-top: 16px;">
+              <div class="dq-appbar"><span class="dq-appbar-title">DataQuest</span></div>
+              <div class="dq-tabbar">
+                <div class="dq-tab active">Companies | AAPL</div>
+                <div class="dq-tab-add">+</div>
+              </div>
+              <div class="dq-pagehead">
+                <div class="dq-nav-btn">←</div>
+                <div class="dq-nav-btn">∨</div>
+                <span>Companies | AAPL</span>
+              </div>
+              <div class="dq-lineage">
+                <div class="dq-lineage-inner">
+                  <div class="dq-lineage-node">Company</div>
+                  <span class="dq-lineage-arrow">›</span>
+                  <div class="dq-lineage-node">Apple Inc.</div>
+                </div>
+                <span class="dq-chevron">∨</span>
+              </div>
+              <div class="dq-summary">
+                <div class="dq-summary-field"><label>Identifier</label><span>AAPL-001</span></div>
+                <div class="dq-summary-field"><label>Long Company Name</label><span>Apple Inc.</span></div>
+                <div class="dq-summary-field"><label>Headquarters</label><span>Cupertino, CA</span></div>
+                <div class="dq-summary-field"><label>Sector</label><span>Technology</span></div>
+              </div>
+              <div class="dq-inner-tabs">
+                <div class="dq-inner-tab">Details</div>
+                <div class="dq-inner-tab">Products</div>
+                <div class="dq-inner-tab active">Hierarchy</div>
+                <div class="dq-inner-tab">Markets</div>
+              </div>
+              <div class="dq-source-row">
+                <span>Source</span>
+                <select class="dq-source-select"><option>Provider A</option><option>Provider B</option></select>
+              </div>
+              <div class="dq-tree">
+                <div class="dq-tree-head">
+                  <div>Entity</div><div>Type</div><div>Country</div>
+                </div>
+                <div class="dq-tree-row">
+                  <div class="dq-entity"><span class="dq-toggle">∨</span><span class="dq-icon">⊙</span><span class="dq-icon">▦</span><strong>Apple Inc.</strong></div>
+                  <div><span class="dq-badge parent">Ultimate Parent</span></div>
+                  <div class="dq-country">United States</div>
+                </div>
+                <div class="dq-tree-row">
+                  <div class="dq-entity indent-1"><span class="dq-icon">▦</span>Beats Electronics LLC</div>
+                  <div><span class="dq-badge sub">Subsidiary</span></div>
+                  <div class="dq-country">United States</div>
+                </div>
+                <div class="dq-tree-row">
+                  <div class="dq-entity indent-1"><span class="dq-toggle">∨</span><span class="dq-icon">▦</span>Apple Operations International Ltd.</div>
+                  <div><span class="dq-badge sub">Subsidiary</span></div>
+                  <div class="dq-country">Ireland</div>
+                </div>
+                <div class="dq-tree-row">
+                  <div class="dq-entity indent-2"><span class="dq-icon">▦</span>Apple Operations Europe Ltd.</div>
+                  <div><span class="dq-badge sub">Subsidiary</span></div>
+                  <div class="dq-country">Ireland</div>
+                </div>
+                <div class="dq-tree-row">
+                  <div class="dq-entity indent-2"><span class="dq-icon">▦</span>Apple Sales International Ltd.</div>
+                  <div><span class="dq-badge sub">Subsidiary</span></div>
+                  <div class="dq-country">Ireland</div>
+                </div>
+                <div class="dq-tree-row">
+                  <div class="dq-entity indent-2"><span class="dq-icon">▦</span>Apple Japan G.K.</div>
+                  <div><span class="dq-badge sub">Subsidiary</span></div>
+                  <div class="dq-country">Japan</div>
+                </div>
+                <div class="dq-tree-row">
+                  <div class="dq-entity indent-2"><span class="dq-icon">▦</span>Apple (UK) Limited</div>
+                  <div><span class="dq-badge sub">Subsidiary</span></div>
+                  <div class="dq-country">United Kingdom</div>
+                </div>
+              </div>
+            </div>
+            <span class="caption">The Hierarchy tab shows the corporate tree with expandable nodes. Switching the source dropdown shows how a different provider models the same corporate structure.</span>
+
+            <!-- MOCKUP 4: products tab -->
+            <div class="dq-mockup" style="margin-top: 16px;">
+              <div class="dq-appbar"><span class="dq-appbar-title">DataQuest</span></div>
+              <div class="dq-tabbar">
+                <div class="dq-tab active">Companies | AAPL</div>
+                <div class="dq-tab-add">+</div>
+              </div>
+              <div class="dq-pagehead">
+                <div class="dq-nav-btn">←</div>
+                <div class="dq-nav-btn">∨</div>
+                <span>Companies | AAPL</span>
+              </div>
+              <div class="dq-lineage">
+                <div class="dq-lineage-inner">
+                  <div class="dq-lineage-node">Company</div>
+                  <span class="dq-lineage-arrow">›</span>
+                  <div class="dq-lineage-node">Apple Inc.</div>
+                </div>
+                <span class="dq-chevron">∨</span>
+              </div>
+              <div class="dq-summary">
+                <div class="dq-summary-field"><label>Identifier</label><span>AAPL-001</span></div>
+                <div class="dq-summary-field"><label>Long Company Name</label><span>Apple Inc.</span></div>
+                <div class="dq-summary-field"><label>Headquarters</label><span>Cupertino, CA</span></div>
+                <div class="dq-summary-field"><label>Sector</label><span>Technology</span></div>
+              </div>
+              <div class="dq-inner-tabs">
+                <div class="dq-inner-tab">Details</div>
+                <div class="dq-inner-tab active">Products</div>
+                <div class="dq-inner-tab">Hierarchy</div>
+                <div class="dq-inner-tab">Markets</div>
+              </div>
+              <div class="dq-source-row">
+                <span>Source</span>
+                <select class="dq-source-select"><option>Provider A</option><option>Provider B</option></select>
+              </div>
+              <table class="dq-table">
+                <thead>
+                  <tr>
+                    <th>Product Name <span class="sort">⇅</span></th>
+                    <th>Product Type <span class="sort">⇅</span></th>
+                    <th>Category <span class="sort">⇅</span></th>
+                    <th>Market <span class="sort">⇅</span></th>
+                    <th>Price <span class="sort">⇅</span></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>iPhone 15 Pro</strong></td><td>Hardware</td><td>Consumer Electronics</td><td>Global</td><td>$999</td><td class="action">∨</td></tr>
+                  <tr><td><strong>MacBook Pro</strong></td><td>Hardware</td><td>Consumer Electronics</td><td>Global</td><td>$1,999</td><td class="action">∨</td></tr>
+                  <tr><td><strong>iPad Pro</strong></td><td>Hardware</td><td>Consumer Electronics</td><td>Global</td><td>$799</td><td class="action">∨</td></tr>
+                  <tr><td><strong>Apple Watch Ultra</strong></td><td>Wearable</td><td>Consumer Electronics</td><td>Global</td><td>$799</td><td class="action">∨</td></tr>
+                  <tr><td><strong>Apple Music</strong></td><td>Service</td><td>Digital Media</td><td>Global</td><td>$10.99/mo</td><td class="action">∨</td></tr>
+                  <tr><td><strong>iCloud+</strong></td><td>Service</td><td>Cloud Storage</td><td>Global</td><td>$0.99/mo</td><td class="action">∨</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <span class="caption">The Products tab lists what the company offers. The same detail shell, a different facet of the same entity.</span>
+
+            <!-- DATA LINEAGE -->
+            <h2 class="SectionHeader">Data lineage, not breadcrumbs</h2>
+              <p class="longDescriptionBottomMargin">
+              The navigation bar at the top of each detail view — showing "Company → Apple Inc." — looks like a breadcrumb but represents something more precise: data lineage. It shows where the entity sits in the data structure, not where the user navigated from. If you're looking at an iPhone, the lineage tells you it belongs to Apple Inc. — and that relationship is the same regardless of whether you arrived via the company list, a market, or the product directly. A conventional breadcrumb reflects the navigation path and shifts depending on how you got there. The lineage view reflects the data — consistent and always accurate.
+
+
+            <!-- HANDLING SOURCE DISCREPANCIES -->
+            <h2 class="SectionHeader">Handling source discrepancies</h2>
+            <p class="longDescriptionBottomMargin">
+              One of the harder design problems was what to do when data providers model the same company structure differently — different subsidiaries, different ultimate parents, different relationship types. The temptation is to show everything at once so users can compare without switching.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              I explored this. I built a side-by-side view and tested it with the team. The conclusion was clear: the volume of information on a single page worked against comparison, not for it. A proper compare feature needs dedicated design investment — layout, interaction model, conflict highlighting — not just two columns on an existing view.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              The source switcher was the right call for this phase. It keeps each view clean and focused, and it turns out users found their own workaround for comparison: opening the same entity in two browser tabs with different sources selected. That wasn't designed in — it emerged from the tab model — and it's a good signal that the underlying architecture was sound.
+            </p>
+
+            <!-- MOCKUP 5: rejected side-by-side -->
+            <div class="sketch-block">
+              <div class="sketch-label">Rejected approach — side by side comparison</div>
+              <div class="sketch-row">
+                <div class="sketch-option">
+                  <div class="sketch-option-label rejected">✕ Both sources on one page</div>
+                  <div class="s-row"><span class="s-tag dark">Provider A</span><div class="s-line dark"></div></div>
+                  <div class="s-row" style="padding-left: 20px;"><div class="s-line"></div><span class="s-tag">Subsidiary</span></div>
+                  <div class="s-row" style="padding-left: 20px;"><div class="s-line"></div><span class="s-tag">Subsidiary</span></div>
+                  <div class="s-row" style="padding-left: 40px;"><div class="s-line"></div><span class="s-tag">Subsidiary</span></div>
+                  <div class="s-row"><span class="s-tag blue">Provider B</span><div class="s-line dark"></div></div>
+                  <div class="s-row" style="padding-left: 20px;"><div class="s-line"></div><span class="s-tag">Subsidiary</span></div>
+                  <div class="s-row" style="padding-left: 20px;"><div class="s-line"></div><span class="s-tag">Intermediate</span></div>
+                  <div class="sketch-note">Two hierarchies, two sets of data. Overwhelming on a single page — comparison requires proper dedicated design, not a layout hack.</div>
+                </div>
+                <div class="sketch-option">
+                  <div class="sketch-option-label chosen">✓ Source switcher per section</div>
+                  <div class="s-row" style="justify-content: flex-end; gap: 6px;"><span style="font-size:10px; color:#888;">Source</span><span class="s-tag dark">Provider A</span></div>
+                  <div class="s-row"><div class="s-line dark"></div><span class="s-tag">Ultimate Parent</span></div>
+                  <div class="s-row" style="padding-left: 20px;"><div class="s-line"></div><span class="s-tag">Subsidiary</span></div>
+                  <div class="s-row" style="padding-left: 20px;"><div class="s-line"></div><span class="s-tag">Subsidiary</span></div>
+                  <div class="s-row" style="padding-left: 40px;"><div class="s-line"></div><span class="s-tag">Subsidiary</span></div>
+                  <div class="s-row" style="padding-left: 40px;"><div class="s-line"></div><span class="s-tag">Subsidiary</span></div>
+                  <div class="sketch-note">One clean view at a time. Switch source to see the alternative. Browser tabs let users compare side by side naturally.</div>
+                </div>
+              </div>
+            </div>
+            <span class="caption">Showing both sources simultaneously was the obvious first instinct — and the wrong one. The source switcher pattern keeps each view focused and usable.</span>
+
+
+
+            <!-- DESIGN DECISIONS -->
+            <div class="DesignDecision">
+              <h2 class="SectionHeader">What this project required of me</h2>
+
+              <p class="longDescriptionBottomNoMargin"><b>Domain knowledge as a design prerequisite</b></p>
+              <p class="longDescriptionBottomMargin">
+                I couldn't design the navigation without understanding how the data model worked — how entities related to one another, what the hierarchy meant, where the ambiguities lived. Designers working in complex domains need to become fluent enough in the subject matter to know when a design decision is structurally wrong, not just visually awkward. Getting up to speed wasn't optional — it was the first design task.
+              </p>
+
+              <p class="longDescriptionBottomNoMargin"><b>Designing for multiple mental models simultaneously</b></p>
+              <p class="longDescriptionBottomMargin">
+                The three entry points weren't arbitrary — they map to distinct user workflows. Getting that right required understanding not just the data model but the different jobs users were actually doing. The same information, presented from a different starting point, needs to feel native to that user's context.
+              </p>
+
+              <p class="longDescriptionBottomNoMargin"><b>Knowing when a feature is not the right solution</b></p>
+              <p class="longDescriptionBottomMargin">
+                The side-by-side comparison view was a reasonable hypothesis. Testing it revealed it was wrong for this context — not because comparison isn't valuable, but because it needs to be a dedicated feature with proper design investment, not a layout hack on an existing view. Being able to kill your own ideas cleanly is a design skill.
+              </p>
+
+              <p class="longDescriptionBottomNoMargin"><b>Designing a system, not a screen</b></p>
+              <p class="longDescriptionBottomMargin">
+                The consistent detail shell, the tab structure, the source switcher — none of these were designed in isolation. Each decision was made with the question: "what happens when we add the next entry point, the next entity type, the next data provider?" The system was designed to accommodate additional entry points — such as users starting from their portfolio holdings — without requiring a redesign. The answer needed to be: the same pattern, no redesign required.
+              </p>
+            </div>
+
+            <!-- OUTCOME -->
+            <h2 class="SectionHeader">Outcome</h2>
+            <p class="longDescriptionBottomMargin">
+              Before launch, I presented DataQuest to company leadership — walking through the design rationale, the key decisions, and how the system was architected to scale beyond its initial scope. That presentation was an important moment: it wasn't just a design review, it was making the case for why the interaction model was sound and why the product was ready. The reception was positive and the feature moved forward to launch.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              DataQuest shipped as a free feature for platform subscribers. The response was stronger than anticipated — user feedback was overwhelmingly positive, with users finding genuine utility in being able to traverse company, product, and market relationships in a single tool. The signal was clear enough that the product team made a significant decision:
+            </p>
+
+            <div class="outcome-callout">
+              <p>What launched as a free value-add for subscribers became a standalone paid feature — driven entirely by user demand rather than a planned monetisation strategy.</p>
+            </div>
+
+            <p class="longDescriptionBottomMargin">
+              That transition is the clearest measure of success available: users valued it enough that the business could charge for it.
+            </p>
+
+            <!-- WHAT'S NEXT -->
+            <h2 class="SectionHeader">What's next</h2>
+            <ul>
+              <li>A dedicated compare feature — structured side-by-side views of the same entity across two data sources, designed properly rather than as a layout workaround.</li>
+              <li>Portfolio as an entry point — allowing users with holdings data in the platform to start from their own positions and traverse from there.</li>
+              <li>Conflict surfacing — proactively flagging where data providers disagree on a key attribute, rather than leaving the user to discover discrepancies by switching manually.</li>
             </ul>
-            <i aria-hidden="true" class="fas fa-bars" title="Burger menu"></i>
-          </nav>
-        </header>
-        <main>
-          <div id="projectMain">
-            <div>
-              <h3>DataQuest</h3>
-            </div>
-            <div id="project">
-              <div id="projectDescription">
-                <h4>UX</h4>
-                <p>
-                DataQuest (DQ) was created to replace manual Excel workflows and Python queries used to explore complex datasets. These processes required expert knowledge, were time-consuming and error-prone, limiting scalability across teams.
-                </p>
-                
-                <div id="aditionalInfo">
-                  <p>
-                    <span class="darkPinkFont">My role:</span> I led UX for DQ from discovery to delivery, conducting user research, defined information architecture, and iterated based on user feedback and technical constraints. I collaborated closely with engineering to address large data and loading challenges.
-                    
-                  </p>
-                  <p>
-                    <span class="darkPinkFont">Tools used:</span> Figma
-                    
-                  </p>
-                  <p><span class="darkPinkFont">Year:</span> 2024</p>
-                  </p>
-                  
-                </div>
-              </div>
-              <div id="projectAssets">
-                <h2 class="SectionHeader">Summary</h2>
-                  <ul>
-                    <li>Designed a data exploration app that replaced Excel based workflows and manual queries.</li>
-                    <li>Strong adoption led to commercialization as a standalone product.</li>
-                    <li>Led UX from discovery to delivery in a highly regulated, data-heavy environment.</li>
-                    <li>Enabled non-technical users to navigate and understand complex multi-source datasets.</li>
-                  </ul>
-                  
-                
-               
 
-                <h2 class="SectionHeader">The Problem</h2>
-                <p class="longDescriptionBottomMargin">
-                  Before DQ traversing the data was a manual and slow process that required domain expertise and made it difficult to understand the relationships between datasets.<br/><br/>
-                  The challenges of this project, were not only replacing manual workflows but also designing an intuitive and scalable system that could display complex relationships between datasets.
-                  </p>
-                
-                 <h2 class="SectionHeader">Complexity and Constrains</h2>
-                <ul>
-                    <li>Large volumes of data across multiple data providers.</li>
-                    <li>Interconnected datasets (companies, products).</li>
-                    <li>Heavy loading times due to the volume of data.</li>
-                    <li>Needed to balance information volume with usability.</li>
-                  </ul>
-                  Attribute with only one source and belonging to a single dataset
-                </p>
-                <h2 class="SectionHeader">Discovery & Research</h2>
-                <p class="longDescriptionBottomMargin">
-                  The solution was to 'compress' all attribute instances under one row. So, the user first selects which attribute they want (battery Life).
-                </p>
-                <a href="../imgs/Modal 1 .png" target="_blank">
-                  <img src="../imgs/Modal 1 .png" alt="Modal 1"
-                /></a>
-                 
-                <h2 class="SectionHeader">Choosing the data source and dataset</h2>
-                <p class="longDescriptionBottomMargin">
-                  Once the user selects an attribute to their 'basket', they can choose the source. If there is only one source, the field is read only.
-                </p>
-                <a href="../imgs/AttributeSelected.png" target="_blank"
-                  ><img
-                    src="../imgs/AttributeSelected.png"
-                    alt="one attribute selected"></a>
-                    <br/>
-                  <a href="../imgs/OneProvider.png" target="_blank"
-                  ><img
-                    src="../imgs/OneProvider.png"
-                    alt="one attribute selected"></a>
-                 
-                <p>
-                  Attribute with only one source and belonging to a single dataset
-                </p>
-                <h2 class="SectionHeader">Attribute Instance Management</h2>
-                <p class="longDescriptionBottomMargin">
-                  The user can add to the 'basket' as many instances of the attribute as available. So, the attribute will also remain on the top section if there are more instances of it. This is also, why there is <b>no use of checkboxes</b> to select the attributes.
-                  In the first example below, the user added 2 instance of the attribute to their basket - the attribute is still available at the top, as it exists in more datasources and datasets.<br/>
-                  On the second example, as there is only one instance of the attribute available, as soon as the user adds it to the 'basket', it disappears from the top section
-                </p>
-                <a href="../imgs/2instancesSelected.png" target="_blank"
-                  ><img
-                    src="../imgs/2instancesSelected.png"
-                    alt="two instances of the same attribute selected"
-                /></a>
-                <p>
-                  Two instances of the same attribute selected - more instances available to select at the top
-                </p>
-                <a href="../imgs/OneInstance.png" target="_blank"
-                  ><img
-                    src="../imgs/OneInstance.png"
-                    alt="Only one instance of the attribute available"
-                /></a>
-                <p>
-                  As there is only one instance, as soon as the user add it to the 'basket' - it disappears from the available attributes to select.
-                </p>
-              
-                <h2 class="SectionHeader">'Basket' Management</h2>
-                <p class="longDescriptionBottomMargin">
-                  As the user can select a lot of attributes, and resolve those attributes to datasources and datasets, they need space at the bottom. For this, they can resize the bottom/top part. This allows to maximise the space when they are searching for attributes to add, but also maximise it when they need to resolve the attributes.
-                </p>
-                <a href="../imgs/Resize.png" target="_blank"
-                  ><img
-                    src="../imgs/resize.png"
-                    alt="basket resize"
-                /></a>
-                <h2 class="SectionHeader">Error Handling</h2>
-                <p class="longDescriptionBottomMargin">
-                  Attributes that need to be resolved in the 'basket', have the cells highlighted red by default - as well as an indication at the bottom bar that these need to be resolved. This indication is accompanied by an icon - to account for colour blind people. <br/><br/>
-                  If the user clicks on the 'Add' button while still having attributes to resolve, the first row to resolve will become highligted - with also an autoscroll implemented which takes to the user to the next attribute that needs resolving. <br/> If the user wants to add the attributes, they would need to resolve all attributes, or delete the ones that are unresolved.</p>
-                <a href="../imgs/error1.png" target="_blank"
-                  ><img
-                    src="../imgs/error1.png"
-                    alt="error default state"
-                /></a>
-                <p>
-                  Default state for rows that still need to be resolved.
-                </p>
-                 <a href="../imgs/error2.png" target="_blank"
-                  ><img
-                    src="../imgs/error2.png"
-                    alt="error cell highlighted"
-                /></a>
-                <p>
-                  Now that the first error is resolved - if the user clicks "add" again, the second error will be highlighted.
-                </p>
-                 <a href="../imgs/error3.png" target="_blank"
-                  ><img
-                    src="../imgs/error3.png"
-                    alt="error cell highlighted"
-                /></a>
-                <p>
-                  If the user clicks on 'Add', the first row that needs to be resolved will be highlited and selected, and the screen will autoscroll so the user can see it.
-                </p>
-                <h2 class="SectionHeader">Bulk Select to add or remove</h2>
-                <p class="longDescriptionBottomMargin">
-                  This functionality allows user to select several attributes, consecutive or not, at the same time by using their keyboard (shift+select the first and the last attribute in a consecutive list or alt + select non consecutive attributes). Once the attributes are selected the user can click on the '+' or 'x' on any row to add or rmeove the selection.
-                </p>
-                <a href="../imgs/SelectedAttributesToAdd.png" target="_blank"
-                  ><img
-                    src="../imgs/SelectedAttributesToAdd.png"
-                    alt="basket resize"
-                /></a>
-                <p>
-                  Several attributes selected to be added to the 'basket'
-                </p><br/>
-                <a href="../imgs/SelectedAttributesToRemove.png" target="_blank"
-                  ><img
-                    src="../imgs/SelectedAttributesToRemove.png"
-                    alt="basket resize"
-                /></a>
-                <p>
-                  Several attributes selected to be removed from the 'basket'
-                </p>
-                <h2 class="SectionHeader">What's Next?</h2>
-                
-                <ul>
-                  <li>After this functionality was implemented, and user research, users still need more space for this functionality. So this modal will be replaced by a drawer - to maximise screensize.</li>
-                  <li>Implementing cell errors (with an icon), instead of realying in colour - to make sure it's accessible and in accordance to WCAG guidelines.</li>
-                  <li>Allow the users to select whole datasets or existing attribute lists.</li>
-                  <li>If it's an existing attribute list - do the attributes selected already exist in the attribute list?</li>
-                </ul>
-                <div class="DesignDecision">
-                  <h2 class="SectionHeader">Design Decisions</h2>
+            <!-- REFLECTION -->
+            <h2 class="SectionHeader">What I'd do differently</h2>
+            <p class="longDescriptionBottomMargin">
+              I'd build a proper compare feature from the start, or at least design the architecture to accommodate one. The source switcher is a good interim solution, and the browser tab workaround users found is genuinely clever — but the underlying need for structured provider comparison is real and deserved a first-class design response from day one.
+            </p>
 
-                  <p class="longDescriptionBottomNoMargin"><b>No Checkboxes</b></p>
-                  <p class="longDescriptionBottomMargin">Checkboxes could be confusing as there are multiple instances of the same attribute. It would only work if the attributes were flatten, displaying the data source and dataset. This would raise the original problem again, loads of attributes for the user to find.</p>
-                  <p class="longDescriptionBottomNoMargin"><b>Bulk Selection</b></p>
-                  <p class="longDescriptionBottomMargin">This is to make it easier for users to select a bunch of attributes - vary valuable in the basket, if the user is faced with several sources and datasets to select, and they don't want to proceed with those and just want to delete them.<br/><br/> It will also be a valuabe function when the datasets and attribute lists are available - if they only want a few of the attributes within the dataset.</p>
-                  <p class="longDescriptionBottomNoMargin"><b>Placement of the '+' and delete</b></p>
-                  <p class="longDescriptionBottomMargin">Normally the placement of these type of buttons is on the right, to allow the user to the row first and then add or delete as appropriate. However, after user feedback the placement of the buttons changed to accomodate for large screens, where the user reads the row but doesn't want to have to move the cursos all along to the other end of the screen.</p>
-                </div>
-              </div>
-            </div>
+
           </div>
-        </main>
-        <footer>
-          <p>Sara Bretes &copy; All rights Reserved</p>
-          <div id="social">
-            <a href="https://twitter.com/Totinhas" target="_blank" rel="noopener"
-              ><i
-                aria-hidden="true"
-                class="fab fa-twitter"
-                title="Twitter Account"
-              ></i
-            ></a>
-            <a
-              href="https://www.linkedin.com/in/sarabretes/"
-              target="_blank"
-              rel="noopener"
-              title="Linkedin Account"
-              ><i aria-hidden="true" class="fab fa-linkedin-in"></i
-            ></a>
-            <a
-              href="https://www.behance.net/sarabretes"
-              target="_blank"
-              rel="noopener"
-              title="Behance Account"
-              ><i aria-hidden="true" class="fab fa-behance"></i
-            ></a>
-            <a
-              href="https://totinhas.github.io/SaraBretesPortfolio/pages/contacts.html#contactForm"
-              target="_blank"
-              ><i
-                aria-hidden="true"
-                class="fas fa-envelope"
-                title="Send me an email"
-              ></i
-            ></a>
-          </div>
-        </footer>
-        <script src="../js/mobileMenu.js"></script>
-      </body>
-    </html>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Sara Bretes &copy; All rights Reserved</p>
+      <div id="social">
+        <a href="https://twitter.com/Totinhas" target="_blank" rel="noopener"><i aria-hidden="true" class="fab fa-twitter" title="Twitter Account"></i></a>
+        <a href="https://www.linkedin.com/in/sarabretes/" target="_blank" rel="noopener" title="Linkedin Account"><i aria-hidden="true" class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.behance.net/sarabretes" target="_blank" rel="noopener" title="Behance Account"><i aria-hidden="true" class="fab fa-behance"></i></a>
+        <a href="https://totinhas.github.io/SaraBretesPortfolio/pages/contacts.html#contactForm" target="_blank"><i aria-hidden="true" class="fas fa-envelope" title="Send me an email"></i></a>
+      </div>
+    </footer>
+
+    <script src="../js/mobileMenu.js"></script>
+
+    <script>
+      (function () {
+        function alignDropdown() {
+          var btn = document.getElementById('dq-plus-btn');
+          var dropdown = document.getElementById('dq-entry-dropdown');
+          if (!btn || !dropdown) return;
+          var btnRect = btn.getBoundingClientRect();
+          var parentRect = btn.closest('[style*="position: relative"]').getBoundingClientRect();
+          dropdown.style.left = (btnRect.left - parentRect.left) + 'px';
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', alignDropdown);
+        } else {
+          alignDropdown();
+        }
+        window.addEventListener('resize', alignDropdown);
+      })();
+    </script>
+  </body>
+</html>
