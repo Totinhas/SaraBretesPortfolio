@@ -131,12 +131,24 @@ h4 {
   background-size: cover;
 }
 
+#work12 {
+  background-image: url("../imgs/DQ.png");
+  height: 300px;
+  background-size: cover;
+}
+
 #work1.lazyBackground,
 #work2.lazyBackground,
 #work3.lazyBackground,
 #work4.lazyBackground,
 #work5.lazyBackground,
-#work6.lazyBackground {
+#work6.lazyBackground
+#work7.lazyBackground
+#work8.lazyBackground
+#work9.lazyBackground
+#work10.lazyBackground 
+#work11.lazyBackground 
+#work12.lazyBackground {
   background-image: none;
   background-color: #fee3ed;
 }
