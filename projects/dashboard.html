@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="My Professional Porftolio" name="description" />
+    <meta content="Digital Portfolio for Designer" name="keywords" />
+    <meta content="Sara Bretes" name="author" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Saras Portfolio | DataQuest</title>
+    <link href="../css/stylesInCommon.css" rel="stylesheet" />
+    <link href="../css/individualProject.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Palanquin:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/74df61d62d.js"></script>
+
+   <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; font-family: "Palanquin", sans-serif; }
+      body { display: flex; flex-direction: column; min-height: 100vh; }
+
+      /* NAV */
+      nav {
+        background-color: #fee3ed;
+        box-shadow: 0px 3px 7px -4px rgba(0,0,0,0.47);
+        padding: 0 10%;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 300;
+        color: #003a51;
+      }
+      nav div { display: flex; padding: 10px; margin: 16px; }
+      nav div > a { color: #003a51; text-decoration: none; }
+      .menus { list-style: none; display: flex; flex-direction: row; padding: 10px; margin: 16px; gap: 0; }
+      .menus li { padding: 0 10px; }
+      .menus a { text-decoration: none; color: #003a51; }
+      .menus li:hover a { color: #c02e64; }
+      .menus .currentPage a { border-bottom: 2px solid #c02e64; color: #c02e64; }
+
+      /* FOOTER */
+      footer { background-color: #003a51; padding: 15px 15px 20px; text-align: center; color: #fff; flex-shrink: 0; }
+      footer p { font-size: 10px; text-align: center; }
+      footer #social a { display: inline-block; margin: 0 8px; color: #fff; text-decoration: none; }
+
+      /* MAIN */
+      main { flex: 1; }
+      #projectMain { padding: 60px 0 80px; }
+      #projectMain > div:first-child h3 { font-size: 24px; text-transform: uppercase; text-align: center; margin: 0 auto 60px; }
+
+      #project { display: flex; flex-wrap: nowrap; flex-direction: column; justify-content: center; text-align: left; }
+      #projectDescription { width: 80%; position: relative; margin: 25px auto; }
+      #projectAssets { width: 80%; display: inline-block; position: relative; margin: 25px auto; }
+
+      /* TYPOGRAPHY */
+      h4 { font-size: 20px; margin-top: 0; }
+      h4::before { content: ""; display: block; height: 2px; width: 50px; background-color: #c02e64; position: relative; z-index: 1; top: 0; left: 0; margin-bottom: 20px; }
+      h5 { font-size: 16px; margin-bottom: 6px; }
+
+      .SectionHeader { font-size: 20px; margin-top: 50px; margin-bottom: 0; padding-bottom: 10px; border-bottom: 1px solid #f0d4de; }
+      .SectionHeader:first-child { margin-top: 0; }
+
+      .longDescription { font-size: 16px; text-align: left; font-style: normal; margin-bottom: 10px; }
+      .longDescriptionBottomMargin { font-size: 16px; text-align: left; font-style: normal; margin-bottom: 40px; }
+      .longDescriptionBottomNoMargin { font-size: 16px; text-align: left; font-style: normal; margin-bottom: 15px; }
+
+      .caption { display: block; font-size: 13px; color: #999; font-style: italic; margin: 8px 0 32px; }
+      #aditionalInfo { margin-top: 40px; }
+      #aditionalInfo p { margin: 5px 0; font-size: 16px; }
+      .darkPinkFont { color: #c02e64; }
+
+      /* LISTS */
+      #projectDescription ul, #projectAssets ul {
+        padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 16px 0 32px;
+      }
+      #projectDescription ul li, #projectAssets ul li {
+        padding-left: 20px; position: relative; font-size: 15px; color: #2a2a2a; line-height: 1.7;
+      }
+      #projectDescription ul li::before, #projectAssets ul li::before {
+        content: '→'; position: absolute; left: 0; color: #c02e64; font-size: 13px; top: 3px;
+      }
+
+      /* DESIGN DECISION BLOCK */
+      .DesignDecision { background: #fff8fb; border: 1px solid #f0d4de; border-radius: 6px; padding: 32px; margin-top: 56px; }
+      .DesignDecision .SectionHeader { margin-top: 0; border-bottom-color: #f0d4de; }
+      .DesignDecision p { font-size: 15px; line-height: 1.8; color: #2a2a2a; }
+
+      /* OUTCOME CALLOUT */
+      .outcome-callout { background: #edf7f1; border-left: 4px solid #2d7a4f; border-radius: 0 6px 6px 0; padding: 20px 24px; margin: 24px 0; }
+      .outcome-callout p { font-size: 15px; color: #1a4a2e !important; margin: 0 !important; font-weight: 500; line-height: 1.6 !important; font-style: normal !important; }
+
+      /* SKETCH BLOCK */
+      .sketch-block { background: #fffdf5; border: 1px dashed #e0c97a; border-radius: 6px; padding: 24px; margin: 8px 0 4px; }
+      .sketch-label { font-size: 11px; font-weight: 700; color: #b8962a; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+      .sketch-label::after { content: ''; flex: 1; height: 1px; background: #e0c97a; }
+      .sketch-row { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+      .sketch-option { flex: 1; min-width: 200px; background: #fff; border: 1px solid #e8e0c0; border-radius: 4px; padding: 14px; }
+      .sketch-option-label { font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+      .sketch-option-label.rejected { color: #c02e64; }
+      .sketch-option-label.chosen { color: #2d7a4f; }
+      .sketch-note { font-size: 12px; color: #b8962a; font-style: italic; margin-top: 10px; padding-top: 8px; border-top: 1px dashed #e0c97a; }
+      .s-row { height: 22px; background: #f5f5f5; border-radius: 3px; margin-bottom: 4px; display: flex; align-items: center; padding: 0 8px; gap: 6px; }
+      .s-line { height: 7px; border-radius: 2px; background: #ddd; flex: 1; }
+      .s-line.dark { background: #bbb; }
+      .s-tag { font-size: 9px; color: #aaa; background: #eee; padding: 1px 5px; border-radius: 3px; }
+      .s-tag.navy { background: #003a51; color: #fff; }
+
+      /* 2-COL INFO GRID */
+      .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0 32px; }
+      .info-block { background: #fff8fb; border: 1px solid #f0d4de; border-radius: 6px; padding: 20px 22px; }
+      .info-block h5 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #c02e64; }
+      .info-block p { font-size: 13px; color: #555; line-height: 1.65; margin: 0; }
+
+      /* RAW DATA TABLES */
+      .data-table-wrap { overflow-x: auto; margin: 16px 0 4px; }
+      .data-raw-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+      .data-raw-table thead tr { background: #fee3ed; }
+      .data-raw-table th { padding: 8px 12px; text-align: right; font-size: 11px; font-weight: 700; color: #003a51; letter-spacing: 0.04em; }
+      .data-raw-table th:first-child, .data-raw-table th:nth-child(2) { text-align: left; }
+      .data-raw-table td { padding: 7px 12px; border-bottom: 1px solid #fde8f0; text-align: right; color: #2a2a2a; font-size: 13px; }
+      .data-raw-table td:first-child, .data-raw-table td:nth-child(2) { text-align: left; color: #003a51; font-weight: 500; }
+      .data-raw-table tr:last-child td { border-bottom: none; }
+      .data-raw-table td.val-pos { color: #2d7a4f; font-weight: 600; }
+      .data-raw-table td.val-neg { color: #c02e64; font-weight: 600; }
+
+      /* DASHBOARD MOCKUP */
+      .dash-mockup { border: 1px solid #dde0e8; border-radius: 8px; overflow: hidden; font-family: 'Palanquin', sans-serif; margin: 4px 0; background: #f7f8fa; font-size: 13px; box-shadow: 0px 3px 7px -4px rgba(0,0,0,0.47); }
+      .dash-titlebar { background: #fff; border-bottom: 1px solid #e8e8f0; padding: 8px 14px; display: flex; align-items: center; gap: 10px; }
+      .dash-dots { display: flex; gap: 5px; flex-shrink: 0; }
+      .dash-dot { width: 9px; height: 9px; border-radius: 50%; }
+      .dot-r { background: #ff6058; } .dot-y { background: #ffbd2e; } .dot-g { background: #28c840; }
+      .dash-title-text { font-size: 12px; font-weight: 600; color: #003a51; flex: 1; }
+      .dash-tabbar { background: #fff; border-bottom: 1px solid #e8e8f0; display: flex; align-items: center; padding: 0 14px; gap: 4px; }
+      .dash-tab { padding: 10px 14px; font-size: 12px; color: #888; border-bottom: 2px solid transparent; cursor: default; display: flex; align-items: center; gap: 6px; }
+      .dash-tab.active { color: #003a51; font-weight: 600; border-bottom-color: #003a51; }
+      .dash-tab-close { width: 14px; height: 14px; border-radius: 50%; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #999; }
+      .dash-topbar { background: #fff; border-bottom: 1px solid #eee; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; }
+      .dash-page-title { font-size: 16px; font-weight: 700; color: #003a51; }
+      .dash-date-btn { background: #f7f8fa; border: 1px solid #dde0e8; border-radius: 4px; padding: 5px 12px; font-size: 12px; color: #555; font-family: 'Palanquin', sans-serif; display: flex; align-items: center; gap: 6px; }
+
+      /* summary cards */
+      .dash-cards { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; padding: 12px 16px; background: #fff; border-bottom: 1px solid #eee; }
+      .dash-card { border: 1px solid #dde0e8; border-radius: 6px; padding: 12px 14px; background: #f7f8fa; cursor: default; }
+      .dash-card.selected { background: #003a51; border-color: #003a51; }
+      .dash-card.selected .dc-label, .dash-card.selected .dc-sub { color: rgba(255,255,255,0.6); }
+      .dash-card.selected .dc-pct { color: #fee3ed; }
+      .dash-card.selected .dc-best { color: #7dd3a8; }
+      .dash-card.selected .dc-worst { color: #ffb3b3; }
+      .dc-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin-bottom: 4px; }
+      .dc-pct { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+      .dc-pct.pos { color: #2d7a4f; } .dc-pct.neg { color: #c02e64; } .dc-pct.fin { color: #2d7a4f; }
+      .dc-sub { font-size: 10px; color: #aaa; }
+      .dc-best { color: #2d7a4f; } .dc-worst { color: #c02e64; }
+
+      /* grid section */
+      .dash-grid-wrap { background: #fff; border-bottom: 1px solid #eee; }
+      .dash-grid-header { padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f0f0f5; }
+      .dash-grid-title-wrap { display: flex; align-items: baseline; gap: 8px; }
+      .dash-section-eyebrow { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: #bbb; display: block; margin-bottom: 1px; }
+      .dash-section-title { font-size: 14px; font-weight: 700; color: #003a51; }
+      .dash-count { font-size: 11px; color: #aaa; }
+      .dash-search { background: #f7f8fa; border: 1px solid #dde0e8; border-radius: 4px; padding: 5px 10px; font-size: 11px; color: #aaa; font-family: 'Palanquin', sans-serif; display: flex; align-items: center; gap: 6px; }
+
+      /* data table inside mockup */
+      .dash-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+      .dash-table th { text-align: left; padding: 7px 10px; font-size: 10px; color: #aaa; border-bottom: 1px solid #eee; font-weight: 600; background: #fafafa; text-transform: uppercase; letter-spacing: 0.05em; }
+      .dash-table th.r { text-align: right; }
+      .dash-table td { padding: 9px 10px; border-bottom: 1px solid #f5f5f5; color: #003a51; font-size: 11px; }
+      .dash-table td.r { text-align: right; }
+      .dash-table tr:last-child td { border-bottom: none; }
+      .dash-table tr:hover td { background: #fafbff; }
+
+      .co-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+      .sector-pill { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 9px; font-weight: 700; }
+      .pill-tech { background: #e8f0fe; color: #1d4ed8; }
+      .pill-fin { background: #fef3c7; color: #92400e; }
+      .chg-pill { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 10px; font-weight: 600; }
+      .chg-pos { background: #d8f0e4; color: #2d7a4f; }
+      .chg-neg { background: #fde8e3; color: #c02e64; }
+      .chg-neu { background: #f0f0f5; color: #888; }
+      .view-link { font-size: 10px; color: #003a51; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+      /* charts row */
+      .dash-bottom { display: grid; grid-template-columns: 1fr 1fr; background: #fff; }
+      .dash-chart-panel { padding: 14px 16px; border-right: 1px solid #eee; }
+      .dash-chart-panel:last-child { border-right: none; }
+      .chart-eyebrow { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: #bbb; display: block; margin-bottom: 2px; }
+      .chart-title { font-size: 13px; font-weight: 700; color: #003a51; margin-bottom: 8px; }
+      .chart-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+      .legend-item { display: flex; align-items: center; gap: 4px; font-size: 9px; color: #aaa; }
+      .legend-line { width: 14px; height: 2px; border-radius: 1px; }
+      .mini-svg { width: 100%; height: 70px; }
+
+      /* performance */
+      .perf-list { display: flex; flex-direction: column; gap: 6px; }
+      .perf-row { display: flex; align-items: center; gap: 7px; font-size: 11px; }
+      .perf-rank { color: #ccc; font-size: 10px; width: 14px; flex-shrink: 0; }
+      .perf-name { color: #003a51; min-width: 70px; font-weight: 500; }
+      .perf-bar-wrap { flex: 1; height: 3px; background: #f0f0f5; border-radius: 2px; overflow: hidden; }
+      .perf-bar { height: 100%; border-radius: 2px; }
+      .perf-val { min-width: 52px; text-align: right; font-weight: 600; font-size: 10px; }
+      .perf-val.pos { color: #2d7a4f; } .perf-val.neg { color: #c02e64; } .perf-val.neu { color: #aaa; }
+
+      /* RESPONSIVE */
+      @media (min-width: 815px) {
+        #project { flex-direction: row; align-items: flex-start; }
+        #projectDescription { width: 30%; margin-right: 50px; }
+        #projectAssets { width: 60%; }
+      }
+      @media (max-width: 600px) {
+        .dash-cards { grid-template-columns: 1fr; }
+        .dash-bottom { grid-template-columns: 1fr; }
+        .info-grid { grid-template-columns: 1fr; }
+        .sketch-row { flex-direction: column; }
+        .dash-table th.hide-sm, .dash-table td.hide-sm { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div>
+          <a href="../index.html"><strong>Sara Bretes</strong></a>
+        </div>
+        <ul class="menus">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../pages/about.html">About</a></li>
+          <li><a href="../pages/projects.html">Projects</a></li>
+          <li><a href="../pages/contacts.html">Contacts</a></li>
+        </ul>
+        <i aria-hidden="true" class="fas fa-bars" title="Burger menu"></i>
+      </nav>
+    </header>
+
+    <main>
+      <div id="projectMain">
+        <div>
+          <h3>DataQuest</h3>
+        </div>
+
+        <div id="project">
+
+           <!-- LEFT -->
+          <div id="projectDescription">
+            <h4>UX / UI · Financial Dashboard</h4>
+            <ul>
+              <li>Visualise end-of-day stock prices across all companies</li>
+              <li>Highlight the biggest % rises and falls and on which days</li>
+              <li>Show price changes by sector with drill-down by company</li>
+              <li>Used on desktop and iPad</li>
+              <li>Figma file following best practices for dev handover</li>
+              <li>Demonstrate Figma reuse and collaboration features</li>
+            </ul>
+            <h5>My role</h5>
+            <p>Sole designer. Responsible for the full UX process — from data analysis and inspiration research through to a Figma component library and developer-ready specifications.</p>
+            <div id="aditionalInfo">
+              <p><span class="darkPinkFont">Tools:</span> Figma</p>
+              <p><span class="darkPinkFont">Implementation:</span> Angular · D3</p>
+              <p><span class="darkPinkFont">Devices:</span> Desktop · iPad</p>
+              <p><span class="darkPinkFont">Users:</span> Financial Professionals</p>
+            </div>
+          </div>
+
+
+
+          <!-- RIGHT -->
+          <div id="projectAssets">
+
+            <h2 class="SectionHeader">Context</h2>
+            <p class="longDescriptionBottomMargin">
+              The task was to design a dashboard for financial professionals performing end-of-week analysis on six stocks across two sectors — Technology (Apple, Google, Microsoft) and Finance (Barclays, Santander, RBS). The application needed to surface end-of-day prices, daily changes in absolute and percentage terms, and let users understand sector and company performance at a glance.
+            </p>
+            <p class="longDescriptionBottomMargin">
+              This was both a UX and a Figma task: the goal was not just a usable interface but a Figma file demonstrating component reuse, colour tokens, design variants, and specs that an Angular/D3 development team could act on directly.
+            </p>
+
+            <h2 class="SectionHeader">The dataset</h2>
+            <p class="longDescriptionBottomNoMargin">Three data views across five trading days (1–5 January), covering six companies in two sectors.</p>
+
+            <div class="data-table-wrap">
+              <table class="data-raw-table">
+                <thead><tr><th>Company</th><th>Sector</th><th>01-Jan</th><th>02-Jan</th><th>03-Jan</th><th>04-Jan</th><th>05-Jan</th></tr></thead>
+                <tbody>
+                  <tr><td>Apple</td><td>Technology</td><td>22</td><td>24</td><td>28</td><td>23</td><td>21</td></tr>
+                  <tr><td>Google</td><td>Technology</td><td>30</td><td>29</td><td>32</td><td>32</td><td>29</td></tr>
+                  <tr><td>Microsoft</td><td>Technology</td><td>14</td><td>15</td><td>18</td><td>21</td><td>21</td></tr>
+                  <tr><td>Barclays</td><td>Finance</td><td>27</td><td>26</td><td>28</td><td>26</td><td>26</td></tr>
+                  <tr><td>Santander</td><td>Finance</td><td>18</td><td>18</td><td>19</td><td>22</td><td>21</td></tr>
+                  <tr><td>RBS</td><td>Finance</td><td>26</td><td>28</td><td>30</td><td>32</td><td>30</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <span class="caption">End of Day Prices (£)</span>
+            <div class="data-table-wrap">
+              <table class="data-raw-table">
+                <thead><tr><th>Company</th><th>Sector</th><th>02-Jan</th><th>03-Jan</th><th>04-Jan</th><th>05-Jan</th></tr></thead>
+                <tbody>
+                  <tr><td>Apple</td><td>Technology</td><td class="val-pos">+9.09%</td><td class="val-pos">+16.67%</td><td class="val-neg">-17.86%</td><td class="val-neg">-8.70%</td></tr>
+                  <tr><td>Google</td><td>Technology</td><td class="val-neg">-3.33%</td><td class="val-pos">+10.34%</td><td>0.00%</td><td class="val-neg">-9.38%</td></tr>
+                  <tr><td>Microsoft</td><td>Technology</td><td class="val-pos">+7.14%</td><td class="val-pos">+20.00%</td><td class="val-pos">+16.67%</td><td>0.00%</td></tr>
+                  <tr><td>Barclays</td><td>Finance</td><td class="val-neg">-3.70%</td><td class="val-pos">+7.69%</td><td class="val-neg">-7.14%</td><td>0.00%</td></tr>
+                  <tr><td>Santander</td><td>Finance</td><td>0.00%</td><td class="val-pos">+5.56%</td><td class="val-pos">+15.79%</td><td class="val-neg">-4.55%</td></tr>
+                  <tr><td>RBS</td><td>Finance</td><td class="val-pos">+7.69%</td><td class="val-pos">+7.14%</td><td class="val-pos">+6.67%</td><td class="val-neg">-6.25%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <span class="caption">Daily % Price Changes — biggest single-day move: Apple <strong style="color:#c02e64;">-17.86%</strong> on 4 Jan; Microsoft <strong style="color:#2d7a4f;">+20.00%</strong> on 3 Jan.</span>
+
+            <h2 class="SectionHeader">Design thinking</h2>
+            <p class="longDescriptionBottomMargin">Before opening Figma I worked through three questions: what does the data show, who is using it, and what do they need to do? Users are financial professionals doing end-of-week analysis — people who care about precision and who are comfortable with high information density.</p>
+
+            <div class="info-grid">
+              <div class="info-block">
+                <h5>User goals</h5>
+                <p>View all EoD prices · Spot the biggest % movers and when they occurred · Drill from sector view into individual company performance</p>
+              </div>
+              <div class="info-block">
+                <h5>Context</h5>
+                <p>Financial professionals performing end-of-week analysis. Used on desktop and iPad Air. Designed in Figma for Angular/D3 handover.</p>
+              </div>
+            </div>
+
+           <h2 class="SectionHeader">Data first, charts second</h2>
+            <p class="longDescriptionBottomMargin">Most dashboards lead with charts. For financial professionals doing detailed analysis, the raw numbers matter more — similar to the Bloomberg Terminal approach. I put the data grid above the charts, with visualisations below to support pattern recognition.</p>
+
+            <div class="sketch-block">
+              <div class="sketch-label">Layout decision</div>
+              <div class="sketch-row">
+                <div class="sketch-option">
+                  <div class="sketch-option-label rejected">✕ Charts first</div>
+                  <div class="s-row" style="background:#fee3ed;"><div class="s-line dark"></div><div class="s-line dark"></div><div class="s-line dark"></div></div>
+                  <div style="background:#eee;height:36px;border-radius:3px;margin-bottom:4px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#aaa;">chart</span></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-line"></div><div class="s-line"></div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-line"></div><div class="s-line"></div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-line"></div><div class="s-line"></div></div>
+                  <div class="sketch-note">Analysts scroll past the chart to reach the data they actually need to work with.</div>
+                </div>
+                <div class="sketch-option">
+                  <div class="sketch-option-label chosen">✓ Data first, charts below</div>
+                  <div class="s-row" style="background:#fee3ed;"><div class="s-line dark"></div><div class="s-line dark"></div><div class="s-line dark"></div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-line"></div><div class="s-line"></div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-line"></div><div class="s-line"></div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-line"></div><div class="s-line"></div></div>
+                  <div style="background:#eee;height:36px;border-radius:3px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#aaa;">chart</span></div>
+                  <div class="sketch-note">Data is immediately accessible. Charts support analysis rather than lead it — closer to Bloomberg Terminal.</div>
+                </div>
+              </div>
+            </div>
+            <span class="caption">The grid sits above the charts so analysts reach the numbers they need without scrolling.</span>
+
+            <h2 class="SectionHeader">Sector cards as the primary filter</h2>
+            <p class="longDescriptionBottomMargin">Rather than asking users to apply a dropdown filter, three always-visible summary cards (ALL, TECHNOLOGY, FINANCE) show sector performance at a glance. Selecting a card filters the entire page — the data grid and charts both update to show only that sector.</p>
+
+            <div class="sketch-block">
+              <div class="sketch-label">Filter approach</div>
+              <div class="sketch-row">
+                <div class="sketch-option">
+                  <div class="sketch-option-label rejected">✕ Dropdown filter</div>
+                  <div class="s-row"><span class="s-tag">Filter: All ▾</span><div class="s-line"></div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-line"></div><div class="s-line"></div></div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-line"></div><div class="s-line"></div></div>
+                  <div class="sketch-note">Sector performance is hidden until the user actively applies a filter.</div>
+                </div>
+                <div class="sketch-option">
+                  <div class="sketch-option-label chosen">✓ Always-visible sector cards</div>
+                  <div style="display:flex;gap:5px;margin-bottom:5px;">
+                    <div style="flex:2;background:#003a51;border-radius:3px;padding:6px 8px;"><div style="font-size:8px;color:rgba(255,255,255,0.6);">ALL</div><div style="font-size:12px;color:#fee3ed;font-weight:700;">+2.36%</div></div>
+                    <div style="flex:1;background:#f7f8fa;border:1px solid #eee;border-radius:3px;padding:6px 8px;"><div style="font-size:8px;color:#aaa;">TECH</div><div style="font-size:12px;color:#c02e64;font-weight:700;">-0.40%</div></div>
+                    <div style="flex:1;background:#f7f8fa;border:1px solid #eee;border-radius:3px;padding:6px 8px;"><div style="font-size:8px;color:#aaa;">FIN</div><div style="font-size:12px;color:#2d7a4f;font-weight:700;">+5.11%</div></div>
+                  </div>
+                  <div class="s-row"><div class="s-line"></div><div class="s-line"></div><div class="s-line"></div></div>
+                  <div class="sketch-note">Sector performance visible immediately. Cards double as filters — clicking one scopes the whole page.</div>
+                </div>
+              </div>
+            </div>
+            <span class="caption">The ALL card is selected by default. Clicking TECHNOLOGY or FINANCE deselects ALL and filters the grid and both charts.</span>
+
+            <h2 class="SectionHeader">The design</h2>
+            <p class="longDescriptionBottomMargin">Overview tab with all six companies visible and ALL sector card selected.</p>
+
+            <div class="dash-mockup">
+              <img src="../imgs/mainscreen.png">
+            </div>
+            <span class="caption">Overview — ALL selected. The dark card shows the active filter. The Performance ranking makes the biggest movers immediately scannable without needing to read the full table.</span>
+
+            <h2 class="SectionHeader">Filtering by sector</h2>
+            <p class="longDescriptionBottomMargin">Selecting the TECHNOLOGY card scopes the entire page — the grid narrows to Apple, Google and Microsoft, and both charts update to reflect only those three companies.</p>
+
+            <div class="dash-mockup">
+              <img src="../imgs/filterTech.png">
+            </div>
+            <span class="caption">TECHNOLOGY selected. Grid and charts scope to three companies only. The search field remains active within the filtered view.</span>
+
+            <h2 class="SectionHeader">Key UX components</h2>
+
+            <p class="longDescriptionBottomNoMargin"><b>Tabs — drilling into companies</b></p>
+            <p class="longDescriptionBottomMargin">The Overview tab is always present and can never be closed — it acts as home. Clicking VIEW on any grid row opens a dedicated tab for that stock. Close icons appear on hover only to reduce visual noise. Multiple company tabs can be open simultaneously.</p>
+
+            <p class="longDescriptionBottomNoMargin"><b>Date picker — controlling what data is shown</b></p>
+            <p class="longDescriptionBottomMargin">The date picker drives all page content. It supports Day, Week, Month, Quarter and Year views. In Week mode, selecting a start day auto-highlights the full 7 days. Non-trading days are disabled. A date range preview shows the selected period before confirming — especially useful for Quarter and Year selections.</p>
+
+            <p class="longDescriptionBottomNoMargin"><b>Data grid — sortable, configurable columns</b></p>
+            <p class="longDescriptionBottomMargin">Column headers have a hover state with sort controls. A kebab menu on each header lets users pin columns, choose which columns are visible, re-order columns, and reset to the default layout — all without disrupting the active sector filter.</p>
+
+            <h2 class="SectionHeader">Figma and developer handover</h2>
+            <p class="longDescriptionBottomMargin">The Figma file was structured for handover to an Angular/D3 development team. Components were built once and reused throughout — every card, tab, grid column, date picker, badge and search field exists as a Figma component with defined variants for all interaction states.</p>
+            <ul>
+              <li>Colour palette set up as Figma variables across named families</li>
+              <li>Text styles defined globally and applied consistently throughout the file</li>
+              <li>Spacing annotated with exact pixel values for both desktop and iPad breakpoints</li>
+              <li>iPad Air layout generated using Figma's Scale feature from the desktop master</li>
+              <li>Interaction notes and expected behaviours documented alongside the Figma file</li>
+            </ul>
+
+            <div class="DesignDecision">
+              <h2 class="SectionHeader">What this project required of me</h2>
+
+              <p class="longDescriptionBottomNoMargin"><b>Understanding the data before designing</b></p>
+              <p class="longDescriptionBottomMargin">The data has three representations — prices, absolute changes, and percentage changes — each serving a different analytical purpose. Understanding which view mattered most for each user task shaped every layout decision, from what the sector cards show to what the grid columns prioritise.</p>
+
+              <p class="longDescriptionBottomNoMargin"><b>Designing for professional users</b></p>
+              <p class="longDescriptionBottomMargin">Financial professionals have high information density tolerance and low patience for friction. The Bloomberg Terminal reference was not aesthetic inspiration — it was a reminder of what "designed for analysts" actually looks like in practice. Charts support, they don't replace.</p>
+
+              <p class="longDescriptionBottomNoMargin"><b>Designing a component system, not a screen</b></p>
+              <p class="longDescriptionBottomMargin">Every component was designed to scale — for the current six companies but also for a future state with more companies, more sectors, or different date ranges. The sector card pattern, the tab model, and the grid column component all extend without redesign.</p>
+            </div>
+
+            <h2 class="SectionHeader">What I'd improve with more time</h2>
+            <ul>
+              <li>Design the individual company tab with richer data — trading volume, P/E ratios, dividend info, beta and alpha</li>
+              <li>Allow chart type customisation within each widget so analysts can choose what suits their task</li>
+              <li>Add hover states on all chart data points</li>
+              <li>Build a full component library in Figma from scratch with consistent naming conventions</li>
+              <li>Produce dedicated iPad specifications rather than relying entirely on the Scale feature</li>
+              <li>Cover additional iPad models with extra breakpoints</li>
+              <li>Include app-wide navigation: user profile, settings, notifications</li>
+            </ul>
+
+            <div class="outcome-callout">
+              <p>AI was used for initial inspiration only — not for generating the design. The Figma best practices requirement means the handover file itself is the deliverable. AI-generated code and Figma components would need building separately, making AI generation inefficient for this type of task.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <footer>
+      <p>Sara Bretes &copy; All rights Reserved</p>
+      <div id="social">
+        <a href="https://twitter.com/Totinhas" target="_blank" rel="noopener"><i aria-hidden="true" class="fab fa-twitter" title="Twitter Account"></i></a>
+        <a href="https://www.linkedin.com/in/sarabretes/" target="_blank" rel="noopener" title="Linkedin Account"><i aria-hidden="true" class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.behance.net/sarabretes" target="_blank" rel="noopener" title="Behance Account"><i aria-hidden="true" class="fab fa-behance"></i></a>
+        <a href="https://totinhas.github.io/SaraBretesPortfolio/pages/contacts.html#contactForm" target="_blank"><i aria-hidden="true" class="fas fa-envelope" title="Send me an email"></i></a>
+      </div>
+    </footer>
+
+    <script src="../js/mobileMenu.js"></script>
+
+    <script>
+      (function () {
+        function alignDropdown() {
+          var btn = document.getElementById('dq-plus-btn');
+          var dropdown = document.getElementById('dq-entry-dropdown');
+          if (!btn || !dropdown) return;
+          var btnRect = btn.getBoundingClientRect();
+          var parentRect = btn.closest('[style*="position: relative"]').getBoundingClientRect();
+          dropdown.style.left = (btnRect.left - parentRect.left) + 'px';
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', alignDropdown);
+        } else {
+          alignDropdown();
+        }
+        window.addEventListener('resize', alignDropdown);
+      })();
+    </script>
+  </body>
+</html>
